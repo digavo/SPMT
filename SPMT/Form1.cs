@@ -15,8 +15,8 @@ using System.Xml;
 
 namespace SPMT
 {
-    // taki sobie komentarz by sprawdzicz czy git jest ok :P 
-
+    
+    // taki sobie komentarz2 by sprawdzicz czy git jest ok :P
     public partial class Form1 : Form
     {
         public Form1()
