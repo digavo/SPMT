@@ -19,25 +19,25 @@ namespace SPMT
     // taki sobie komentarz2 by sprawdzicz czy git jest ok :P
     public partial class Form1 : Form
     {
-        public List<String> lista_miast = new List<String>();
-        public Graf[,] tabelapocalosci;
+        public List<String> lista_miast = new List<String>();    // lista miast 
+        public Graf[,] tabelapocalosci;    // tablica zawerajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
         public class Graf
         {
-            private string miasto1;
-            private string miasto2;
-            private double droga;
-            private TimeSpan czas;
+            private string miasto1;   // nazwa miasta1 (wierzcholek grafu)
+            private string miasto2;  //  nazwa miasta2 (wierzcholek grafu)
+            private double droga;    // odleglosc pomiedzy miasto1 i miasto2 (krawedz grafu)
+            private TimeSpan czas;   // czas przejazdu pomiedzy miasto1 i miasto2 (krawedz grafu)
 
-            public void set(string m1 = "", string m2 = "", double s = 0.0, int h = 0, int min = 0)
+            public void set(string m1 = "", string m2 = "", double s = 0.0, int h = 0, int min = 0)// ustawia wartosci w tej klasie
             {
                 this.miasto1 = m1;
                 this.miasto2 = m2;
                 this.droga = s;
                 this.czas = new TimeSpan(0, h, min, 0);
             }
-            public int gettime() { return czas.Hours * 60 + czas.Minutes; }
-            public int gethour() { return czas.Hours; }
-            public int getmin() { return czas.Minutes; }
+            public int gettime() { return czas.Hours * 60 + czas.Minutes; } //zwraca całkowity czas w minutach 
+            public int gethour() { return czas.Hours; }                     //zwraca tylko godziny bez minut
+            public int getmin() { return czas.Minutes; }                     //zwraca tylko minuty bez godzin
             public string getmiasto1() { return miasto1; }
             public string getmiasto2() { return miasto2; }
             public double getdroga() { return droga; }
@@ -58,11 +58,11 @@ namespace SPMT
             //webBrowser1.UserAgent:= 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:26.0) Gecko/20100101 Firefox/26.0';
             if (lista_miast.Count >= 2)
             {
-                zainicjuj_tabele();
-                wyswietl_tabele();
-                String punkt1 = lista_miast[0];
-                String punkt2 = lista_miast[lista_miast.Count - 1];
-                String typpojazdu = "/data=!4m2!4m1!3e0"; //auto
+                zainicjuj_tabele(); 
+                //wyswietl_tabele(); 
+                String punkt1 = lista_miast[0];// miasto  poczatkowe
+                String punkt2 = lista_miast[lista_miast.Count - 1]; // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
+                String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
                 //StringBuilder add = new StringBuilder("https://www.google.pl/maps?q=");
                 //add.Append(punkt1);
                 //add.Append(punkt2);
@@ -72,11 +72,12 @@ namespace SPMT
             
                 GetDistance(punkt1, punkt2);
                 GetTime(punkt1, punkt2);
+                wyswietl_tabele();
             }
             else { MessageBox.Show("bledna liczba miast"); }
         }
 
-        private void plus_Click(object sender, EventArgs e)
+        private void plus_Click(object sender, EventArgs e) // dodaje miasto do listy miast
         {
             lista_miast.Add(textBox1.Text);
             aktualizuj_liste_miast_do_wyswietlenia();
