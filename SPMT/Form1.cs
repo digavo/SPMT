@@ -38,9 +38,9 @@ namespace SPMT
             public int gettime() { return czas.Hours * 60 + czas.Minutes; } //zwraca całkowity czas w minutach 
             public int gethour() { return czas.Hours; }                     //zwraca tylko godziny bez minut
             public int getmin() { return czas.Minutes; }                     //zwraca tylko minuty bez godzin
-            public string getmiasto1() { return miasto1; }
-            public string getmiasto2() { return miasto2; }
-            public double getdroga() { return droga; }
+            public string getmiasto1() { return miasto1; }                  // zwraca pierwsze z miast
+            public string getmiasto2() { return miasto2; }                  // zwraca drugie z miast
+            public double getdroga() { return droga; }                      //zwraca droge pomiedzy nimi
         }
 
         public Form1()
@@ -51,7 +51,7 @@ namespace SPMT
             aktualizuj_liste_miast_do_wyswietlenia();
         }
 
-        private void wyznacz_trase__Click(object sender, EventArgs e)
+        private void wyznacz_trase__Click(object sender, EventArgs e) // przycisk wyznacz trase
         {
             //tabelapocalosci = new Graf[lista_miast.Count, lista_miast.Count];
             //webBrowser2.Update();
@@ -68,10 +68,12 @@ namespace SPMT
                 //add.Append(punkt2);
                 StringBuilder add = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,11z" + typpojazdu);
                 //StringBuilder add = new StringBuilder("https://google.pl");
-                webBrowser2.Navigate(add.ToString());
-            
-                GetDistance(punkt1, punkt2);
-                GetTime(punkt1, punkt2);
+                webBrowser2.Navigate(add.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
+
+                // wyswietla w label1 i label2 czas i droge
+                GetDistance(punkt1, punkt2); 
+                GetTime(punkt1, punkt2);   
+                  
                 wyswietl_tabele();
             }
             else { MessageBox.Show("bledna liczba miast"); }
@@ -87,7 +89,7 @@ namespace SPMT
             lista_miast.Remove(textBox1.Text);
             aktualizuj_liste_miast_do_wyswietlenia();
         }
-        void aktualizuj_liste_miast_do_wyswietlenia()
+        void aktualizuj_liste_miast_do_wyswietlenia()  // pobiera aktualna liste miast i wyswielta ja w richTextBox1
         {
             string stringout = "Lista miast: \n\n";
             for (int i = 0; i < lista_miast.Count; i++)
@@ -97,7 +99,7 @@ namespace SPMT
             richTextBox1.Text = stringout;
         }
 
-        public string GetTimeORDistance(string origin, string destination, bool tryb)
+        public string GetTimeORDistance(string origin, string destination, bool tryb) // pobiera czas lub droge z google map api i zapisuje ja w string razem z jednostkami (funkcja GetTime i GetDistance usuwaja jednostke i zwracaja wartosc liczbowa int lub double)
         {
             //true to czas
             //false to dystans
@@ -118,8 +120,8 @@ namespace SPMT
                 {
                     if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
                     {
-                        if (tryb == true) { return ds.Tables["duration"].Rows[0]["text"].ToString(); }
-                        else { return ds.Tables["distance"].Rows[0]["text"].ToString(); }
+                        if (tryb == true) { return ds.Tables["duration"].Rows[0]["text"].ToString(); } // zwraca czas
+                        else { return ds.Tables["distance"].Rows[0]["text"].ToString(); }  // zwraca droge
                     }
                 }
                 return "0";
@@ -134,11 +136,11 @@ namespace SPMT
             }
         }
 
-        public double GetDistance(string origin, string destination)
+        public double GetDistance(string origin, string destination) // pobiera droge wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
         {
             string str1 = GetTimeORDistance(origin, destination, false);
             label2.Text = str1;
-            String[] substrings = str1.Split(' ');
+            String[] substrings = str1.Split(' '); 
             try
             {
                 double s;
@@ -153,7 +155,7 @@ namespace SPMT
             }
         }
 
-        public int GetTime(string origin, string destination)
+        public int GetTime(string origin, string destination) // pobiera czas wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
         {
             string str2 = GetTimeORDistance(origin, destination, true);
             label1.Text = str2;
@@ -184,7 +186,7 @@ namespace SPMT
             }
         }
 
-        private void zainicjuj_tabele()
+        private void zainicjuj_tabele() // pobiera liste miast wyznacza odleglosci i czas i zapisuje do tablicy
         {
             tabelapocalosci = new Graf[lista_miast.Count, lista_miast.Count];
             for (int i = 0; i < lista_miast.Count; i++)
@@ -198,7 +200,8 @@ namespace SPMT
                 }
             }
         }
-        private void wyswietl_tabele()
+
+        private void wyswietl_tabele() // wyswietla co jest w tabeli
         {
 
             string daneout = "\t";
