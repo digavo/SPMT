@@ -139,7 +139,7 @@ namespace SPMT
         public double GetDistance(string origin, string destination) // pobiera droge wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
         {
             string str1 = GetTimeORDistance(origin, destination, false);
-            label2.Text = str1;
+            label2.Text = "Odległość: "+str1;
             String[] substrings = str1.Split(' '); 
             try
             {
@@ -158,7 +158,7 @@ namespace SPMT
         public int GetTime(string origin, string destination) // pobiera czas wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
         {
             string str2 = GetTimeORDistance(origin, destination, true);
-            label1.Text = str2;
+            label1.Text = "Czas: "+str2;
 
             String[] substrings = str2.Split(' ');
             string s_h = "0", s_m = "0";
