@@ -12,7 +12,7 @@ namespace SPMT
         /// <summary>
         /// Aby podac wlasna nazwe bazy danych, nalezy wywolac konstruktor bazowy z nazwą jako parametrem.
         /// </summary>
-        public TransportDbContext() : base("BazaKurier1")
+        public TransportDbContext() : base("BazaKurier2")
         {
             // Użyj klasy StudiaDbInitializer do zainicjalizowania bazy danych.
             Database.SetInitializer<TransportDbContext>(new TransportDbInitializer());
@@ -20,8 +20,7 @@ namespace SPMT
 
         public DbSet<Klient> Klienci { get; set; }
         public DbSet<Adres> Adresy { get; set; }
-
-        
+        public DbSet<Zamówienie> Zamówienia { get; set; }
     }
 
 }

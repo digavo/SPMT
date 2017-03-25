@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace SPMT
 {
     public class Adres
     {
+        [Key]
         public int Id { get; set; }
         public string Miasto { get; set; }
         public string KodPocztowy { get; set; }
@@ -15,7 +17,7 @@ namespace SPMT
         
         public override string ToString()
         {
-            return string.Format("Id={0}, Miasto={1}, Kod={2}, Ul.={3}", Id, Miasto, KodPocztowy, Ulica);
+            return string.Format("{0}, {1}", Miasto, Ulica);
         }
     }
 }
