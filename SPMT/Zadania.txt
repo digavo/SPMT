@@ -1,0 +1,64 @@
+﻿Cele programu:
+Zawiera bazę zamówień z adresami, użytkownik wybiera zamówienia (lub dodawane są w zależności od daty/ miejscowości), 
+wyliczana jest trasa optymalna i pokazywana na mapie. Pokazywany jest czas przejazdu, długość
+
+?pokazywanie zużycia paliwa, przy podaniu spalania?
+
+?Użytkownik może zapisać trasę z googla i wrzucić na komórkę?
+
+? czy użytkownik dodaje klientów i zamówienia, czy są one dodawane przy składaniu zamówień 
+np. przez internet (i znajdują się w bazie)
+_______________________________________________________
+
+ZADANIA:
+1 Interfejs ogólny
+2 Baza danych
+3 Komiwojażer
+4 Google maps
+
+UWAGI:
+! W Program.cs można zakomentować wybrany WindowsForm
+aktualnie Form1 - google maps, Form2 - bazy, MainForm - główny interfejs
+
+! Zmiany w klasach bazy danych lepiej zatwierdzać NIE przez migrację (potem się może coś popsuć)
+tylko poprzez stworzenie bazy od nowa (nie mamy dużo rekordów więc to nie problem)
+poprzez zmianę nazwy bazy : base("BazaKurier2") w  TransportDbContext 
+
+! baza tworzy się na (localdb)\v11.0, najlepiej podglądać ja przez 
+	VIEW > SQL Server Object Explorer > SQL Server > (localdb)\v11.0 > Databases
+	Jeżeli nie macie v11.0 w SQL Server Object Explorer na górze jest Add SQL Server i w Local powinno być 
+_______________________________________________________
+
+1 INTERFEJS:
++ przyciski Zamówień (+Klientów), Trasy, Mapy -> nawigacja między zakładkami OK
++ pasek menu
+
+TODO:
+- opcje paska menu oprogramować
+- dodać obsługę przycisków 
+- formularz dodawania klientów, zamówień
+- sortowanie zamówień
+- wizualizacja trasy
+
+_______________________________________________________
+
+2 BAZA DANYCH:
+Code first, zawiera klasy:
+Adres, Klient, Zamówienie
+
+TODO:
+- wprowadzanie danych, usuwanie, 
+
+_______________________________________________________
+
+3 Komiwojażer
+[algorytm wyznaczający optymalną trasę między adresami z listy]
+
+TODO:
+
+_______________________________________________________
+
+4 Google maps
+[dostarcza komiwojażerowi informacji o odległościach adresów z listy, wyświetla trasę wynikową]
+
+TODO:

@@ -48,13 +48,13 @@ namespace SPMT
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ListaKlientów.Count() == 0) return;
+            /*if (ListaKlientów.Count() == 0) return;
             int curItem = listBox1.SelectedIndex;
             Klient klient = ListaKlientów[curItem];
             ListaKlientów.RemoveAt(curItem);
             ctx.Adresy.Remove(klient.Adres);
             ctx.Klienci.Remove(klient);
-            ctx.SaveChanges();
+            ctx.SaveChanges();*/
         }
     
         private void button3_Click(object sender, EventArgs e)
