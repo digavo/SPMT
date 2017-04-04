@@ -26,12 +26,12 @@ namespace SPMT
             panelEmpty.BringToFront();
 
             //nie wiem jak u was ale mi na tych foreach'ach zawsze wyskakuje 'System.Data.SqlClient.SqlException' occurred in EntityFramework.dll 
-            /*
+            
             foreach (var k in ctx.Klienci)
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
                 ListaZamówień.Add(z);
-             */
+             
             dataGridView1.DataSource = ListaKlientów;
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["AdresId"].Visible = false;
