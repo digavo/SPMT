@@ -66,12 +66,33 @@ namespace SPMT
                 geo_y = get_Location_XorY_Town(GET_GEOXY.GEO_Y);
                 if(geo_x != 0 && geo_y != 0) { status = true; } // miasto znalezione wiec jest ok :) 
             }
-            public string get_town() { return name; }   // zwraca nazwe miasta
-            public double get_geoX() { return geo_x; }   // zwraca geo x
-            public double get_geoY() { return geo_y; }   // zwraca geo y
-            public bool result_status() { return status; }
-            protected bool czy_jakosc_powietrza_w_miescie_jest_dobra() {  return false;  }  // :P 
-            protected bool czy_miasto_nalezy_do_serii_ksiazek_metro_uniwersum() { if (name == "Wrocław" || name == "Moskwa") return true; else return false; } // ciekawe czy ktos wogole przegladnie chociaz ten kod
+            public string get_town()        // zwraca nazwe miasta
+            {
+                return name;
+            } 
+            public double get_geoX()       // zwraca geo x
+            {
+                return geo_x;
+            }  
+            public double get_geoY()     // zwraca geo y
+            {
+                return geo_y;
+            } 
+            public bool result_status()
+            {
+                return status;
+            }
+            protected bool czy_jakosc_powietrza_w_miescie_jest_dobra()
+            {
+                return false;
+            }  
+            protected bool czy_miasto_nalezy_do_serii_ksiazek_metro_uniwersum() // ciekawe czy ktos wogole przegladnie chociaz ten kod
+            {
+                if (name == "Wrocław" || name == "Moskwa")
+                    return true;
+                else
+                    return false;
+            }
         }
 
         public class GA_POMIEDZYMIASTAMI // zawiera dwa miasta oraz info o dystansie i czas miedzy nimi
@@ -166,7 +187,6 @@ namespace SPMT
                 GA_MIASTO GAM = new GA_MIASTO(s);
                 this.lista_miast.Remove(GAM);
             }
-            public int SIZE_LIST() { return lista_miast.Count; }
             public void Dane_googleAPI_read()   // MAGIC !!! 
             {
                 if (lista_miast.Count >= 2)
@@ -216,14 +236,31 @@ namespace SPMT
             else { MessageBox.Show("bledna liczba miast"); }
             }
 
-            /*oraz funkcje do danych  dla Komiwojarzera ktore zostana dodane lekko pozniej po ustaleniu z reszta team'u
-             *  public ...
-             *  public ...
-             *  public ...
-             *  public ...
-             *  public ...
-             * */
+            //Funkcje dla Eweliny
+            public double get_GEOX(int index_w_liscie)
+            {
+                if (lista_miast.Count > index_w_liscie)
+                {
+                    return lista_miast[index_w_liscie].get_geoX();
+                }
+                return 0;
+            }
+            public double get_GEOY(int index_w_liscie)
+            {
+                if (lista_miast.Count > index_w_liscie)
+                {
+                    return lista_miast[index_w_liscie].get_geoY();
+                }
+                return 0;
+            }
+            public int SIZE_LIST()
+            {
+                return lista_miast.Count;
+            }
+            public void get_list_form_salesman(List<int> PoprawnaKolejnoscMiast)
+            {
 
+            }
         }
 
         public Form1() { InitializeComponent(); Form1_Init();}
@@ -242,6 +279,15 @@ namespace SPMT
             DaneTrasowe Miasteczka = new DaneTrasowe();
             Miasteczka.ADD_LIST("Wrocław");  // dodajac miast klasa sama tworzac obiekt GA_MIASTO dodaje wspolrzedne geograficzne przy pomocy google api 
             Miasteczka.ADD_LIST("Opole");    // ten sam efekt mozna uzyskac tworzac liste string a potem wywolujac konstruktor z parametrem
+            Miasteczka.Dane_googleAPI_read();
+            /* Dla Eweliny :)
+            for (; Miasteczka.SIZE_LIST();)
+            {
+                Miasteczka.get_GEOX(i);  //dla miasta i wspolrzedne geograficzne x
+                Miasteczka.get_GEOY(i); //dla miasta i wspolrzedne geograficzne y
+            }
+            */
+
 
 
             string msg1 = Miasteczka.DANE_IN(); // komunikat ktory pozwala w szybki sposob zweryfikowac czy wspolrzedne miasta zostaly wyszukane poprawnie 
@@ -249,21 +295,5 @@ namespace SPMT
             string msg2 = Miasteczka.DANE_OUT(); // komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
             MessageBox.Show(msg1.ToString()+ "\n \n "+msg2.ToString()); 
         }
-
-
-        private void wyznacz_trase__Click(object sender, EventArgs e) // przycisk wyznacz trase
-        {}
-
-        private void plus_Click(object sender, EventArgs e) // dodaje miasto do listy miast
-        {}
-
-        private void minus_Click(object sender, EventArgs e) //usuwa miasto z listy miast
-        {}
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {}
-
-        private void Form1_Load(object sender, EventArgs e)
-        {}
     }
 }
