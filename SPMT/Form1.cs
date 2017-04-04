@@ -15,222 +15,255 @@ using System.Xml;
 
 namespace SPMT
 {
-    
-    // taki sobie komentarz2 by sprawdzicz czy git jest ok :P
+
     public partial class Form1 : Form
     {
-        public List<String> lista_miast = new List<String>();    // lista miast 
-        public Graf[,] tabelapocalosci;    // tablica zawerajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
-        public class Graf
+        public class GA_MIASTO  // wszystkie info o miescie
         {
-            private string miasto1;   // nazwa miasta1 (wierzcholek grafu)
-            private string miasto2;  //  nazwa miasta2 (wierzcholek grafu)
-            private double droga;    // odleglosc pomiedzy miasto1 i miasto2 (krawedz grafu)
-            private TimeSpan czas;   // czas przejazdu pomiedzy miasto1 i miasto2 (krawedz grafu)
-
-            public void set(string m1 = "", string m2 = "", double s = 0.0, int h = 0, int min = 0)// ustawia wartosci w tej klasie
+            //private:   dane
+            private string name;       // nazwa miasta
+            private double geo_x;      // wspolrzedne geograficzne Y
+            private double geo_y;      // wspolrzedne geograficzne Y
+            private bool status;       // zmienna informujaca czy miasto zostalo poprawnie znalezione przy pomocy googleAPI 
+            //private:  metody
+            private enum GET_GEOXY { GEO_X, GEO_Y }  
+            private double get_Location_XorY_Town(GET_GEOXY GEO_XY) // zwracamy wspolrzedna x albo y 
             {
-                this.miasto1 = m1;
-                this.miasto2 = m2;
-                this.droga = s;
-                this.czas = new TimeSpan(0, h, min, 0);
-            }
-            public int gettime() { return czas.Hours * 60 + czas.Minutes; } //zwraca całkowity czas w minutach 
-            public int gethour() { return czas.Hours; }                     //zwraca tylko godziny bez minut
-            public int getmin() { return czas.Minutes; }                     //zwraca tylko minuty bez godzin
-            public string getmiasto1() { return miasto1; }                  // zwraca pierwsze z miast
-            public string getmiasto2() { return miasto2; }                  // zwraca drugie z miast
-            public double getdroga() { return droga; }                      //zwraca droge pomiedzy nimi
-        }
-
-        public Form1()
-        {
-            InitializeComponent();
-            lista_miast.Add("Wrocław");
-            lista_miast.Add("Opole");
-            aktualizuj_liste_miast_do_wyswietlenia();
-        }
-
-        private void wyznacz_trase__Click(object sender, EventArgs e) // przycisk wyznacz trase
-        {
-            //tabelapocalosci = new Graf[lista_miast.Count, lista_miast.Count];
-            //webBrowser2.Update();
-            //webBrowser1.UserAgent:= 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:26.0) Gecko/20100101 Firefox/26.0';
-            if (lista_miast.Count >= 2)
-            {
-                zainicjuj_tabele(); 
-                //wyswietl_tabele(); 
-                String punkt1 = lista_miast[0];// miasto  poczatkowe
-                String punkt2 = lista_miast[lista_miast.Count - 1]; // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
-                String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
-                //StringBuilder add = new StringBuilder("https://www.google.pl/maps?q=");
-                //add.Append(punkt1);
-                //add.Append(punkt2);
-                StringBuilder add = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,11z" + typpojazdu);
-                //StringBuilder add = new StringBuilder("https://google.pl");
-                webBrowser2.Navigate(add.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
-
-                // wyswietla w label1 i label2 czas i droge
-                GetDistance(punkt1, punkt2); 
-                GetTime(punkt1, punkt2);   
-                  
-                wyswietl_tabele();
-            }
-            else { MessageBox.Show("bledna liczba miast"); }
-        }
-
-        private void plus_Click(object sender, EventArgs e) // dodaje miasto do listy miast
-        {
-            lista_miast.Add(textBox1.Text);
-            aktualizuj_liste_miast_do_wyswietlenia();
-        }
-        private void minus_Click(object sender, EventArgs e) //usuwa miasto z listy miast
-        {
-            lista_miast.Remove(textBox1.Text);
-            aktualizuj_liste_miast_do_wyswietlenia();
-        }
-        void aktualizuj_liste_miast_do_wyswietlenia()  // pobiera aktualna liste miast i wyswielta ja w richTextBox1
-        {
-            string stringout = "Lista miast: \n\n";
-            for (int i = 0; i < lista_miast.Count; i++)
-            {
-                stringout += lista_miast[i] + "\n";
-            }
-            richTextBox1.Text = stringout;
-        }
-
-        public string GetTimeORDistance(string origin, string destination, bool tryb) // pobiera czas lub droge z google map api i zapisuje ja w string razem z jednostkami (funkcja GetTime i GetDistance usuwaja jednostke i zwracaja wartosc liczbowa int lub double)
-        {
-            //true to czas
-            //false to dystans
-            try
-            {
-                string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false";
-
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                WebResponse response = request.GetResponse();
-                Stream dataStream = response.GetResponseStream();
-                StreamReader sreader = new StreamReader(dataStream);
-                string responsereader = sreader.ReadToEnd();
-                response.Close();
-
-                DataSet ds = new DataSet();
-                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
-                if (ds.Tables.Count > 0)
+                double XorY = 0; // to zwracamy jesli sie nie uda
+                try
                 {
-                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                    string url = @"https://maps.googleapis.com/maps/api/geocode/xml?address=" + name;
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    WebResponse response = request.GetResponse();
+                    Stream dataStream = response.GetResponseStream();
+                    StreamReader sreader = new StreamReader(dataStream);
+                    string responsereader = sreader.ReadToEnd();
+                    response.Close();
+
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+                    if (ds.Tables.Count > 0)
                     {
-                        if (tryb == true) { return ds.Tables["duration"].Rows[0]["text"].ToString(); } // zwraca czas
-                        else { return ds.Tables["distance"].Rows[0]["text"].ToString(); }  // zwraca droge
+                        if (ds.Tables[0].Rows[0]["status"].ToString() == "OK")
+                        {
+                            if (GEO_XY == GET_GEOXY.GEO_X){XorY = double.Parse(ds.Tables["location"].Rows[0]["lat"].ToString(), System.Globalization.CultureInfo.InvariantCulture);return XorY; } // zwraca wspolrzedne X
+                            else if (GEO_XY == GET_GEOXY.GEO_Y){XorY = double.Parse(ds.Tables["location"].Rows[0]["lng"].ToString(),System.Globalization.CultureInfo.InvariantCulture); return XorY;} // zwraca wspolrzedne Y
+                        }
+                        //MessageBox.Show("sukces Lokalizacja: \n" + ds.Tables[0].Rows[0]["status"].ToString() + "\n");
+                        //MessageBox.Show("sukces Lokalizacja: \n"+ds.Tables["location"].Rows[0]["lat"].ToString() +"\n"+ ds.Tables["location"].Rows[0]["lng"].ToString());                  
                     }
                 }
-                return "0";
+                catch { MessageBox.Show("bled podczas pobierania lokalizacji" + name); status = false;  }
+                return XorY;
             }
-            catch
+            
+            //public:
+            public GA_MIASTO(string n)       // jaki konstruktor jest kazdy widzi :P  pozatym sam uzupelnia geo_x geo_y i status 
             {
-                if (tryb == true)
-                    MessageBox.Show("bledpodczas pobierania czasu przejazdu dla trasy od " + origin + " do " + destination);
-                else
-                    MessageBox.Show("bledpodczas pobierania dystansu dla trasy od " + origin + " do " + destination);
-                return "0";
+                name = n;
+                status = false;
+                geo_x = get_Location_XorY_Town(GET_GEOXY.GEO_X);
+                geo_y = get_Location_XorY_Town(GET_GEOXY.GEO_Y);
+                if(geo_x != 0 && geo_y != 0) { status = true; } // miasto znalezione wiec jest ok :) 
             }
+            public string get_town() { return name; }   // zwraca nazwe miasta
+            public double get_geoX() { return geo_x; }   // zwraca geo x
+            public double get_geoY() { return geo_y; }   // zwraca geo y
+            public bool result_status() { return status; }
+            protected bool czy_jakosc_powietrza_w_miescie_jest_dobra() {  return false;  }  // :P 
+            protected bool czy_miasto_nalezy_do_serii_ksiazek_metro_uniwersum() { if (name == "Wrocław" || name == "Moskwa") return true; else return false; } // ciekawe czy ktos wogole przegladnie chociaz ten kod
         }
 
-        public double GetDistance(string origin, string destination) // pobiera droge wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
+        public class GA_POMIEDZYMIASTAMI // zawiera dwa miasta oraz info o dystansie i czas miedzy nimi
         {
-            string str1 = GetTimeORDistance(origin, destination, false);
-            label2.Text = "Odległość: "+str1;
-            String[] substrings = str1.Split(' '); 
-            try
+            private GA_MIASTO miasto1;
+            private GA_MIASTO miasto2;
+            private double dystans;           // w km
+            private TimeSpan czas;            // [dni, h, min, sek] dni=0 bez przesady kurierzy nie beda pracowac ponad 24h :P
+            private bool status;               // status czy dystans i czas sa niezerowe oraz czy miasto1 i miasto2 zostaly utworzone poprawnie
+            private enum GET_KM_or_TIME { GET_TIME, GET_DISTANCE }
+            private double GetTimeORDistance(string origin, string destination, GET_KM_or_TIME SorT) // pobiera czas lub droge z google map api 
             {
-                double s;
-                s = double.Parse(substrings[0], System.Globalization.CultureInfo.InvariantCulture);
-                //Double.TryParse(substrings[0],out s);//Convert.ToDouble(substrings[0]);
-                return s;
-            }
-            catch
-            {
-                MessageBox.Show("bledna konwersja z " + substrings[0] + " na wartosc double ");
-                return 0;
-            }
-        }
-
-        public int GetTime(string origin, string destination) // pobiera czas wraz z jednostka potem usuwaja jednostke i zwracaja wartosc liczbowa 
-        {
-            string str2 = GetTimeORDistance(origin, destination, true);
-            label1.Text = "Czas: "+str2;
-
-            String[] substrings = str2.Split(' ');
-            string s_h = "0", s_m = "0";
-            int t_h = 0, t_m = 0;
-            if (substrings[1] == "min" || substrings[1] == "mins")
-            {
-                s_m = substrings[0];
-            }
-            else
-            {
-                s_h = substrings[0];
-
-                try { s_m = substrings[2]; } catch { MessageBox.Show("brak indeksu dla substrings[2] w wyrazeniu" + str2); }
-            }
-            try
-            {
-                Int32.TryParse(s_h, out t_h);
-                Int32.TryParse(s_m, out t_m);
-                return t_h * 60 + t_m;
-            }
-            catch
-            {
-                MessageBox.Show("bledna konwersja z " + s_h + " lub " + s_m + " na wartosc int ");
-                return 0;
-            }
-        }
-
-        private void zainicjuj_tabele() // pobiera liste miast wyznacza odleglosci i czas i zapisuje do tablicy
-        {
-            tabelapocalosci = new Graf[lista_miast.Count, lista_miast.Count];
-            for (int i = 0; i < lista_miast.Count; i++)
-            {
-                for (int j = 0; j < lista_miast.Count; j++)
+                double ST = 0; // to zwracamy jesli sie nie uda
+                try
                 {
-                    double s = GetDistance(lista_miast[i], lista_miast[j]);
-                    int total_min = GetTime(lista_miast[i], lista_miast[j]);
-                    tabelapocalosci[i, j] = new Graf();//.set(lista_miast[i], lista_miast[j],0.0,0,0);
-                    tabelapocalosci[i, j].set(lista_miast[i], lista_miast[j], s, total_min / 60, total_min % 60);
+                    string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false";
+
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    WebResponse response = request.GetResponse();
+                    Stream dataStream = response.GetResponseStream();
+                    StreamReader sreader = new StreamReader(dataStream);
+                    string responsereader = sreader.ReadToEnd();
+                    response.Close();
+
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                        {
+                            if (GET_KM_or_TIME.GET_TIME == SorT) { return double.Parse(ds.Tables["duration"].Rows[0]["value"].ToString()); } // zwraca czas
+                            else if (GET_KM_or_TIME.GET_DISTANCE == SorT) { return double.Parse(ds.Tables["distance"].Rows[0]["value"].ToString()); }  // zwraca droge
+                        }
+                    }
+                }
+                catch { MessageBox.Show("bled podczas pobierania czasu przejazdu lub dystansu przejazdu dla trasy od " + origin + " do " + destination); }
+                return ST;
+            }
+            private double Set_TimeSpan(double czasowo)  //ustawia wartosc TimeSpan czas
+            {
+                this.czas = new TimeSpan(0, ((int)czasowo) / 3600, (((int)czasowo)/60) % 60, ((int)czasowo)  % 60);
+                return czasowo;
+            } 
+
+            public GA_POMIEDZYMIASTAMI(string m1, string m2)
+            {
+                this.status = false;
+                this.miasto1 = new GA_MIASTO(m1);
+                this.miasto2 = new GA_MIASTO(m2);
+                if (this.miasto1.result_status() == true && this.miasto2.result_status() == true)//miasta sa ok 
+                {
+                    this.dystans = GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_DISTANCE)/1000;
+                    double czasowka = Set_TimeSpan(GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_TIME));
+                    if (this.dystans != 0 && czasowka != 0) { status = true; }
+                }
+            }                   // konstruktor polaczenie miedzy miastami 
+            public int get_time() { return this.czas.Hours * 60 + czas.Minutes; } //zwraca całkowity czas w minutach 
+            public int get_hour() { return this.czas.Hours; }                     //zwraca tylko godziny bez minut
+            public int get_min() { return this.czas.Minutes; }                     //zwraca tylko minuty bez godzin
+            public string get_miasto1() { return this.miasto1.get_town(); }                  // zwraca pierwsze z miast
+            public string get_miasto2() { return this.miasto2.get_town(); }                  // zwraca drugie z miast
+            public double get_dystans() { return this.dystans; }                      //zwraca droge pomiedzy nimi
+            public bool result_status() { return this.status; }
+        }
+
+        public class DaneTrasowe    // zawiera liste wszystkie miasta razem z tablica polaczeniami pomiedzy nimi
+        {
+            enum GET_DATA { TOWN, CZAS, DISTANCE, GEO_X, GEO_Y }
+            private List<GA_MIASTO> lista_miast;                     // lista miast 
+            private GA_POMIEDZYMIASTAMI[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
+
+            public DaneTrasowe() 
+            {
+                this.lista_miast = new List<GA_MIASTO>();
+            }
+            public DaneTrasowe(List<String> listaM)
+            {
+                this.lista_miast = new List<GA_MIASTO>(listaM.Count);
+                for (int i = 0; i < listaM.Count; i++)
+                {
+                    GA_MIASTO GAM = new GA_MIASTO(listaM[i]);
+                    this.lista_miast.Add(GAM);
                 }
             }
-        }
-
-        private void wyswietl_tabele() // wyswietla co jest w tabeli
-        {
-
-            string daneout = "\t";
-            for (int i = 0; i < lista_miast.Count; i++)
+            public void ADD_LIST(string s)
             {
-                daneout += lista_miast[i] + "\t\t";
+                GA_MIASTO GAM = new GA_MIASTO(s);
+                this.lista_miast.Add(GAM);
             }
-            for (int i = 0; i < lista_miast.Count; i++)
+            public void DEL_LIST(string s)
             {
-                daneout += "\n" + lista_miast[i] + "\t";
-                for (int j = 0; j < lista_miast.Count; j++)
+                GA_MIASTO GAM = new GA_MIASTO(s);
+                this.lista_miast.Remove(GAM);
+            }
+            public int SIZE_LIST() { return lista_miast.Count; }
+            public void Dane_googleAPI_read()   // MAGIC !!! 
+            {
+                if (lista_miast.Count >= 2)
                 {
-                    daneout += tabelapocalosci[i, j].getdroga().ToString() + "km";
-                    daneout += "[" + tabelapocalosci[i, j].gethour().ToString() + "h " + tabelapocalosci[i, j].getmin().ToString() + "min]";
-                    daneout += "\t";
+                    int factorial = 1; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
+                    for (int i = 1; i <= lista_miast.Count - 1; i++) { factorial *= i; }
+
+                    Tab_Pom_Miast = new GA_POMIEDZYMIASTAMI[factorial];
+                    for (int i = 0; i < lista_miast.Count; i++)
+                    {
+                        for (int j = i + 1; j < lista_miast.Count; j++)
+                        {
+                            Tab_Pom_Miast[i] = new GA_POMIEDZYMIASTAMI(lista_miast[i].get_town(), lista_miast[j].get_town()); // wywolujemy konstruktor a on robi wszystko za nas :P
+                        }
+                    }
                 }
             }
-            MessageBox.Show(daneout);
+            public string DANE_IN()// komunikat ktory pozwala w szybki sposob zweryfikowac czy wspolrzedne miasta zostaly wyszukane poprawnie 
+            {
+                string daneIN = "";
+                for (int i = 0; i < this.lista_miast.Count; i++)
+                {
+                    daneIN += this.lista_miast[i].get_town() + " [" + this.lista_miast[i].get_geoX() + " , " + this.lista_miast[i].get_geoY() + "] status=" + this.lista_miast[i].result_status().ToString() +"\n";
+                }
+                return daneIN;
+            }
+            public string DANE_OUT()// komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
+            {
+                string daneOUT = "";
+                for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+                {
+                    daneOUT += Tab_Pom_Miast[i].get_miasto1() + "\t" + Tab_Pom_Miast[i].get_miasto2() + "\t" + Tab_Pom_Miast[i].get_dystans() + "km \t" + Tab_Pom_Miast[i].get_hour()+ "h "+ Tab_Pom_Miast[i].get_min()+"min \n";
+                }
+                return daneOUT;
+            }
+            public void showTrasa(WebBrowser WB)  // wyswietla transe w WebBrowserze obecnie pomiedzy pierwszym a ostatnim miastem
+            {
+                if (lista_miast.Count >= 2)
+                {
+                    String punkt1 = lista_miast[0].get_town();// miasto  poczatkowe
+                    String punkt2 = lista_miast[lista_miast.Count - 1].get_town(); // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
+                    String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
+                    //StringBuilder SB = new StringBuilder("https://www.google.pl/maps?q=");add.Append(punkt1);add.Append(punkt2);
+                    StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,11z" + typpojazdu);
+                    WB.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
+                }
+            else { MessageBox.Show("bledna liczba miast"); }
+            }
+
+            /*oraz funkcje do danych  dla Komiwojarzera ktore zostana dodane lekko pozniej po ustaleniu z reszta team'u
+             *  public ...
+             *  public ...
+             *  public ...
+             *  public ...
+             *  public ...
+             * */
+
         }
 
+        public Form1() { InitializeComponent(); Form1_Init();}
+
+        public void Form1_Init()
+        {
+            //albo w taki sposob
+            /* 
+            DaneTrasowe Miasteczka = new DaneTrasowe();
+            List<String> listaM = new List<String>();
+            listaM.Add("Wrocław");
+            listaM.Add("Opole");
+            DaneTrasowe Miasteczka = new DaneTrasowe(listaM); // konstruktor z parametrem
+            */
+            // albo w taki sposob
+            DaneTrasowe Miasteczka = new DaneTrasowe();
+            Miasteczka.ADD_LIST("Wrocław");  // dodajac miast klasa sama tworzac obiekt GA_MIASTO dodaje wspolrzedne geograficzne przy pomocy google api 
+            Miasteczka.ADD_LIST("Opole");    // ten sam efekt mozna uzyskac tworzac liste string a potem wywolujac konstruktor z parametrem
+
+
+            string msg1 = Miasteczka.DANE_IN(); // komunikat ktory pozwala w szybki sposob zweryfikowac czy wspolrzedne miasta zostaly wyszukane poprawnie 
+            Miasteczka.Dane_googleAPI_read();   //jak juz mamy wszystkie miasta dodane to metoda Dane_googleAPI_read tworzy liste wszystkich polaczen miedzy miastami i dodaje odleglosci miedzy nimi oraz czas przejazdu 
+            string msg2 = Miasteczka.DANE_OUT(); // komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
+            MessageBox.Show(msg1.ToString()+ "\n \n "+msg2.ToString()); 
+        }
+
+
+        private void wyznacz_trase__Click(object sender, EventArgs e) // przycisk wyznacz trase
+        {}
+
+        private void plus_Click(object sender, EventArgs e) // dodaje miasto do listy miast
+        {}
+
+        private void minus_Click(object sender, EventArgs e) //usuwa miasto z listy miast
+        {}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        {}
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        {}
     }
 }
