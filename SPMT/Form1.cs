@@ -259,7 +259,12 @@ namespace SPMT
             }
             public void get_list_form_salesman(List<int> PoprawnaKolejnoscMiast)
             {
-
+                List<GA_MIASTO> copy_lista_miast =  new List<SPMT.Form1.GA_MIASTO> (lista_miast);
+                lista_miast.Clear();
+                for (int i=0;i< PoprawnaKolejnoscMiast.Count;i++)
+                {
+                    this.lista_miast.Add(copy_lista_miast[PoprawnaKolejnoscMiast[i]]);
+                }
             }
         }
 
