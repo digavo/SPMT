@@ -21,11 +21,11 @@ namespace SPMT
         [ForeignKey("OdbiorcaId")]
         public virtual Klient Odbiorca { get; set; }
         public string RodzajPaczki { get; set; }
-        public int? WagaPaczki { get; set; }
+        public int? WagaPaczki { get; set; } //gramy
 
         public override string ToString()
         {
-            return String.Format("{0}; {1}; {2} ", Id, DataNadania, RodzajPaczki);
+            return String.Format("{0}; {1}; {2}; {3}gram", Id, Nadawca.Adres, RodzajPaczki, WagaPaczki);
         }
     }
 }

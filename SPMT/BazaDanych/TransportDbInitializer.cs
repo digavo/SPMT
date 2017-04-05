@@ -22,7 +22,7 @@ namespace SPMT
             context.Klienci.Add(klient);
             context.Klienci.Add(klient2);
             context.Zamówienia.Add(new Zamówienie() { DataNadania = DateTime.Today, Nadawca = klient, Odbiorca = klient2, RodzajPaczki = "List polecony" });
-            
+            context.Zamówienia.Add(new Zamówienie() { DataNadania = DateTime.Today, Nadawca = klient2, Odbiorca = klient, RodzajPaczki = "Paczka", WagaPaczki=500 });
             context.SaveChanges();
             base.Seed(context);
         }
