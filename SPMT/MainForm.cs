@@ -47,25 +47,31 @@ namespace SPMT
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // MENU
+        private void buttonZam_Click(object sender, EventArgs e)
         {
             label2.Text = "Zamówienia";
             tabControlZam.BringToFront();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonTrasa_Click(object sender, EventArgs e)
         {
             label2.Text = "Trasa";
             groupTrasa.BringToFront();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonMapa_Click(object sender, EventArgs e)
         {
             label2.Text = "Mapa";
             groupMapa.BringToFront();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        // ZAMÓWIENIA I KLIENCI
+        private void buttonZamDodaj_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonZamUsun_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
             int curItem = dataGridView1.SelectedRows[0].Index;
@@ -75,7 +81,7 @@ namespace SPMT
             ctx.SaveChanges();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void buttonZamDodajDoTrasy_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
             int curItem = dataGridView1.SelectedRows[0].Index;
@@ -83,7 +89,12 @@ namespace SPMT
             if (!ListaTrasy.Contains(z))
                 ListaTrasy.Add(z);
         }
-        private void button7_Click(object sender, EventArgs e)
+        private void buttonZamDodajKlient_Click(object sender, EventArgs e)
+        {
+            //FormKlient formularz = new FormKlient();
+            //formularz.Show();
+        }
+        private void buttonZamUsunKlient_Click(object sender, EventArgs e)
         {
             if (ListaKlientów.Count() == 0) return;
             int curItem = dataGridView2.SelectedRows[0].Index;
@@ -94,18 +105,29 @@ namespace SPMT
             ctx.SaveChanges();
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        // TRASA 
+        private void buttonTrasaUsunZam_Click(object sender, EventArgs e)
         {
             if (ListaTrasy.Count() == 0) return;
             ListaTrasy.Remove( (Zamówienie)listBox1.SelectedItem);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void buttonTrasaDodajZam_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
             Zamówienie z = (Zamówienie) listBox2.SelectedItem;
             if (!ListaTrasy.Contains(z))
                 ListaTrasy.Add(z);
+        }
+
+        private void buttonTrasaWyznacz_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTrasaUsun_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
