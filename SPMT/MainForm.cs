@@ -18,7 +18,6 @@ namespace SPMT
         private TransportDbContext ctx = new TransportDbContext();
         public MainForm()
         {
-            
             InitializeComponent();
             panelEmpty.Dock = DockStyle.Fill;
             tabControlZam.Dock = DockStyle.Fill;
@@ -42,8 +41,6 @@ namespace SPMT
             dataGridView2.Columns["AdresId"].Visible = false;
             dataGridView1.DataSource = ListaZamówień;
             
-            //Daga to Kris - jak zamierzasz otwierać okna nie powiązane z tym oknem to rób to w Program.cs
-            //Form1 instance = new Form1();  // otoz w tej jedenj linijce jest cale oprogramowanie do googleAPI // instance.Form1_Init();
 
         }
 
@@ -64,6 +61,13 @@ namespace SPMT
         {
             label2.Text = "Mapa";
             groupMapa.BringToFront();
+
+            foreach (var z in ListaTrasy)
+            {
+                
+                richTextBox2.Text+=z.Odbiorca.Adres.ToString()+"\n";
+            }
+
         }
 
         // ZAMÓWIENIA I KLIENCI

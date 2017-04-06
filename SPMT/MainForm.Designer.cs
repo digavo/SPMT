@@ -48,7 +48,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panelEmpty = new System.Windows.Forms.Panel();
             this.groupMapa = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupTrasa = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -64,6 +63,8 @@
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label5 = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -318,21 +319,13 @@
             // 
             // groupMapa
             // 
+            this.groupMapa.Controls.Add(this.richTextBox2);
             this.groupMapa.Controls.Add(this.label5);
-            this.groupMapa.Location = new System.Drawing.Point(581, 3);
+            this.groupMapa.Location = new System.Drawing.Point(291, 3);
             this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(184, 365);
+            this.groupMapa.Size = new System.Drawing.Size(474, 365);
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 15);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Mapa z wyznaczoną trasą:";
             // 
             // groupTrasa
             // 
@@ -481,6 +474,23 @@
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Mapa z wyznaczoną trasą:";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(17, 39);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(176, 96);
+            this.richTextBox2.TabIndex = 2;
+            this.richTextBox2.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -541,7 +551,6 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupMapa;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
@@ -552,5 +561,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Panel panelEmpty;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Label label5;
     }
 }
