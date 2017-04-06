@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//using DotNetBrowser;
+//using DotNetBrowser.WinForms;
+
 namespace SPMT
 {
     public partial class MainForm : Form 
@@ -72,7 +75,7 @@ namespace SPMT
 
             String miejsce = "Brooklyn+Bridge,New+York,NY";
             String znacznik1 = "&markers = color:green | label:G | 40.711614,-74.012318";
-            String znacznik2 = "&markers = color:blue|label:S|40.702147,-74.015794"; 
+            String znacznik2 = "&markers = color:blue  | label:S | 40.702147,-74.015794"; 
 
 
             StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);
