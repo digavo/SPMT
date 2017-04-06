@@ -36,6 +36,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.groupMapa = new System.Windows.Forms.GroupBox();
+            this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControlZam = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button6 = new System.Windows.Forms.Button();
@@ -47,9 +51,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panelEmpty = new System.Windows.Forms.Panel();
-            this.groupMapa = new System.Windows.Forms.GroupBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupTrasa = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -65,16 +66,15 @@
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
+            this.groupMapa.SuspendLayout();
             this.tabControlZam.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupMapa.SuspendLayout();
             this.groupTrasa.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -177,6 +177,43 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(784, 395);
             this.panelMain.TabIndex = 3;
+            // 
+            // groupMapa
+            // 
+            this.groupMapa.Controls.Add(this.webBrowserMAP);
+            this.groupMapa.Controls.Add(this.richTextBox2);
+            this.groupMapa.Controls.Add(this.label5);
+            this.groupMapa.Location = new System.Drawing.Point(427, 3);
+            this.groupMapa.Name = "groupMapa";
+            this.groupMapa.Size = new System.Drawing.Size(338, 365);
+            this.groupMapa.TabIndex = 16;
+            this.groupMapa.TabStop = false;
+            this.groupMapa.Enter += new System.EventHandler(this.groupMapa_Enter);
+            // 
+            // webBrowserMAP
+            // 
+            this.webBrowserMAP.Location = new System.Drawing.Point(211, 23);
+            this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserMAP.Name = "webBrowserMAP";
+            this.webBrowserMAP.Size = new System.Drawing.Size(514, 322);
+            this.webBrowserMAP.TabIndex = 3;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(17, 39);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(176, 96);
+            this.richTextBox2.TabIndex = 2;
+            this.richTextBox2.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(185, 18);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Mapa z wyznaczoną trasą:";
             // 
             // tabControlZam
             // 
@@ -318,35 +355,6 @@
             this.panelEmpty.Size = new System.Drawing.Size(134, 120);
             this.panelEmpty.TabIndex = 17;
             // 
-            // groupMapa
-            // 
-            this.groupMapa.Controls.Add(this.webBrowserMAP);
-            this.groupMapa.Controls.Add(this.richTextBox2);
-            this.groupMapa.Controls.Add(this.label5);
-            this.groupMapa.Location = new System.Drawing.Point(469, 3);
-            this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(296, 365);
-            this.groupMapa.TabIndex = 16;
-            this.groupMapa.TabStop = false;
-            this.groupMapa.Enter += new System.EventHandler(this.groupMapa_Enter);
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(17, 39);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(176, 96);
-            this.richTextBox2.TabIndex = 2;
-            this.richTextBox2.Text = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(185, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Mapa z wyznaczoną trasą:";
-            // 
             // groupTrasa
             // 
             this.groupTrasa.Controls.Add(this.richTextBox1);
@@ -360,7 +368,7 @@
             this.groupTrasa.Controls.Add(this.label3);
             this.groupTrasa.Location = new System.Drawing.Point(153, 3);
             this.groupTrasa.Name = "groupTrasa";
-            this.groupTrasa.Size = new System.Drawing.Size(411, 387);
+            this.groupTrasa.Size = new System.Drawing.Size(383, 387);
             this.groupTrasa.TabIndex = 0;
             this.groupTrasa.TabStop = false;
             this.groupTrasa.Enter += new System.EventHandler(this.groupTrasa_Enter);
@@ -496,14 +504,6 @@
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // webBrowserMAP
-            // 
-            this.webBrowserMAP.Location = new System.Drawing.Point(211, 23);
-            this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(446, 326);
-            this.webBrowserMAP.TabIndex = 3;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -521,13 +521,13 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelSide.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
+            this.groupMapa.ResumeLayout(false);
+            this.groupMapa.PerformLayout();
             this.tabControlZam.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupMapa.ResumeLayout(false);
-            this.groupMapa.PerformLayout();
             this.groupTrasa.ResumeLayout(false);
             this.groupTrasa.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

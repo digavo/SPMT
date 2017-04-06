@@ -33,11 +33,11 @@ namespace SPMT
             //Daga to Kris: http://jaryl-lan.blogspot.com/2014/08/localdb-connection-to-localdb-failed.html - może nie masz lokalnej bazy danych, 
             //              jak to nie zadziała to dodamy connection string ręcznie 
 
-            foreach (var k in ctx.Klienci)
+         /*   foreach (var k in ctx.Klienci)
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
                 ListaZamówień.Add(z);
-
+                */
             listBox1.DataSource = ListaTrasy;
             listBox2.DataSource = ListaZamówień;
             dataGridView2.DataSource = ListaKlientów;
@@ -78,7 +78,7 @@ namespace SPMT
             String znacznik2 = "&markers = color:blue  | label:S | 40.702147,-74.015794"; 
 
 
-            StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);
+           // StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);
 
 
             //String punkt1 ="Wroclaw";// miasto  poczatkowe
@@ -88,8 +88,8 @@ namespace SPMT
             //StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,9z" + typpojazdu);
 
             SetWebBrowserVersion(11001); // musi byc
-            webBrowserMAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
-
+            //webBrowserMAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
+            webBrowserMAP.DocumentText = "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" >< head >< meta charset = \"utf-8\" /> < title ></ title > </ head >< body > < iframe width = \"600\"height = \"450\"frameborder = \"0\" style = \"border:0\"src = \"https://www.google.com/maps/embed/v1/place?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ& q = Space + Needle,Seattle + WA\" allowfullscreen></iframe> </ body ></ html > ";
         }
 
         // Set a registry DWORD value.
