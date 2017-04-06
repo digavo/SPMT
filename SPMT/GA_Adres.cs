@@ -15,7 +15,7 @@ namespace SPMT
     {
         
         //private:   dane
-        private string name;       // nazwa miasta
+        private string adres;       
         private double geo_x;      // wspolrzedne geograficzne Y
         private double geo_y;      // wspolrzedne geograficzne Y
         private bool status;       // zmienna informujaca czy miasto zostalo poprawnie znalezione przy pomocy googleAPI 
@@ -26,7 +26,7 @@ namespace SPMT
             double XorY = 0; // to zwracamy jesli sie nie uda
             try
             {
-                string url = @"https://maps.googleapis.com/maps/api/geocode/xml?address=" + name;
+                string url = @"https://maps.googleapis.com/maps/api/geocode/xml?address=" + adres;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
                 Stream dataStream = response.GetResponseStream();
@@ -47,14 +47,14 @@ namespace SPMT
                     //MessageBox.Show("sukces Lokalizacja: \n"+ds.Tables["location"].Rows[0]["lat"].ToString() +"\n"+ ds.Tables["location"].Rows[0]["lng"].ToString());                  
                 }
             }
-            catch { MessageBox.Show("bled podczas pobierania lokalizacji" + name); status = false; }
+            catch { MessageBox.Show("bled podczas pobierania lokalizacji" + adres); status = false; }
             return XorY;
         }
 
         //public:
         public GA_Adres(string n)       // jaki konstruktor jest kazdy widzi :P  pozatym sam uzupelnia geo_x geo_y i status 
         {
-            name = n;
+            adres = n;
             status = false;
             geo_x = get_Location_XorY_Town(GET_GEOXY.GEO_X);
             geo_y = get_Location_XorY_Town(GET_GEOXY.GEO_Y);
@@ -62,7 +62,7 @@ namespace SPMT
         }
         public string get_town()        // zwraca nazwe miasta
         {
-            return name;
+            return adres;
         }
         public double get_geoX()       // zwraca geo x
         {
@@ -76,13 +76,14 @@ namespace SPMT
         {
             return status;
         }
+        // bardzo wazne funckje co google API
         protected bool czy_jakosc_powietrza_w_miescie_jest_dobra()
         {
             return false;
         }
         protected bool czy_miasto_nalezy_do_serii_ksiazek_metro_uniwersum() // ciekawe czy ktos wogole przegladnie chociaz ten kod
         {
-            if (name == "Wrocław" || name == "Moskwa")
+            if (adres == "Wrocław" || adres == "Moskwa")
                 return true;
             else
                 return false;
