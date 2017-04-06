@@ -48,13 +48,20 @@ Adres, Klient, Zamówienie
 
 TODO:
 - wprowadzanie danych, usuwanie, 
-
+- wprowadzenie bazy kuriera
+- ograniczenia czasu dostarczenia 
 _______________________________________________________
 
 3 Komiwojażer
 [algorytm wyznaczający optymalną trasę między adresami z listy]
 
-TODO:
+- na wejściu macierz D z pkt4
+- wyjście: permutacja adresów 
+- trzeba określić bazę kuriera - punkt początkowy i końcowy
+
+TODO: 
+- dodatkowe warunki, terminy dostarczenia (okna czasowe)
+- po 4h przerwa - dodać po wyznaczeniu trasy optymalnej
 
 _______________________________________________________
 
@@ -62,3 +69,6 @@ _______________________________________________________
 [dostarcza komiwojażerowi informacji o odległościach adresów z listy, wyświetla trasę wynikową]
 
 TODO:
+- odczytać listę adresów(miasto, ulica, kod), stworzyć macierz odległości D (n+1)x(n+1) z czym dij != dji
+- dodatkowo macierz T - czasów przejazdów 
+- lista adresów -> współżędne geograficzne -> macierz D i T -> komiwojażer
