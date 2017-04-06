@@ -48,6 +48,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panelEmpty = new System.Windows.Forms.Panel();
             this.groupMapa = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupTrasa = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -63,8 +65,7 @@
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -88,13 +89,13 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panelMain, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.263923F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73608F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(930, 436);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(930, 432);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -115,7 +116,7 @@
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSide.Location = new System.Drawing.Point(3, 34);
             this.panelSide.Name = "panelSide";
-            this.panelSide.Size = new System.Drawing.Size(134, 399);
+            this.panelSide.Size = new System.Drawing.Size(134, 395);
             this.panelSide.TabIndex = 0;
             // 
             // button3
@@ -167,14 +168,14 @@
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.groupMapa);
             this.panelMain.Controls.Add(this.tabControlZam);
             this.panelMain.Controls.Add(this.panelEmpty);
-            this.panelMain.Controls.Add(this.groupMapa);
             this.panelMain.Controls.Add(this.groupTrasa);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(143, 34);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(784, 399);
+            this.panelMain.Size = new System.Drawing.Size(784, 395);
             this.panelMain.TabIndex = 3;
             // 
             // tabControlZam
@@ -194,10 +195,10 @@
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(136, 221);
+            this.tabPage1.Size = new System.Drawing.Size(136, 218);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -260,10 +261,10 @@
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(136, 221);
+            this.tabPage2.Size = new System.Drawing.Size(136, 218);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Klienci";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -319,13 +320,32 @@
             // 
             // groupMapa
             // 
+            this.groupMapa.Controls.Add(this.webBrowserMAP);
             this.groupMapa.Controls.Add(this.richTextBox2);
             this.groupMapa.Controls.Add(this.label5);
-            this.groupMapa.Location = new System.Drawing.Point(291, 3);
+            this.groupMapa.Location = new System.Drawing.Point(469, 3);
             this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(474, 365);
+            this.groupMapa.Size = new System.Drawing.Size(296, 365);
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
+            this.groupMapa.Enter += new System.EventHandler(this.groupMapa_Enter);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(17, 39);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(176, 96);
+            this.richTextBox2.TabIndex = 2;
+            this.richTextBox2.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(185, 18);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Mapa z wyznaczoną trasą:";
             // 
             // groupTrasa
             // 
@@ -343,6 +363,7 @@
             this.groupTrasa.Size = new System.Drawing.Size(411, 387);
             this.groupTrasa.TabIndex = 0;
             this.groupTrasa.TabStop = false;
+            this.groupTrasa.Enter += new System.EventHandler(this.groupTrasa_Enter);
             // 
             // richTextBox1
             // 
@@ -399,23 +420,23 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
+            this.listBox2.ItemHeight = 18;
             this.listBox2.Items.AddRange(new object[] {
             "nr zamówienia / Adres"});
             this.listBox2.Location = new System.Drawing.Point(282, 29);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(270, 154);
+            this.listBox2.Size = new System.Drawing.Size(270, 148);
             this.listBox2.TabIndex = 25;
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
+            this.listBox1.ItemHeight = 18;
             this.listBox1.Items.AddRange(new object[] {
             "nr zamówienia / Adres"});
             this.listBox1.Location = new System.Drawing.Point(6, 29);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(270, 154);
+            this.listBox1.Size = new System.Drawing.Size(270, 148);
             this.listBox1.TabIndex = 2;
             // 
             // label4
@@ -423,7 +444,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(283, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 15);
+            this.label4.Size = new System.Drawing.Size(192, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "Lista zamówień wszystkich:";
             // 
@@ -432,19 +453,20 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 15);
+            this.label3.Size = new System.Drawing.Size(175, 18);
             this.label3.TabIndex = 0;
             this.label3.Text = "Lista zamówień na trasie:";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
             this.ustawieniaToolStripMenuItem,
             this.oProgramieToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(930, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(930, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -453,47 +475,38 @@
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zapiszTrasęToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            this.plikToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.plikToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.plikToolStripMenuItem.Text = "Dane";
             // 
             // zapiszTrasęToolStripMenuItem
             // 
             this.zapiszTrasęToolStripMenuItem.Name = "zapiszTrasęToolStripMenuItem";
-            this.zapiszTrasęToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.zapiszTrasęToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.zapiszTrasęToolStripMenuItem.Text = "Zapisz trasę";
             // 
             // ustawieniaToolStripMenuItem
             // 
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
             // 
             // oProgramieToolStripMenuItem
             // 
             this.oProgramieToolStripMenuItem.Name = "oProgramieToolStripMenuItem";
-            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // label5
+            // webBrowserMAP
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 15);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Mapa z wyznaczoną trasą:";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(17, 39);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(176, 96);
-            this.richTextBox2.TabIndex = 2;
-            this.richTextBox2.Text = "";
+            this.webBrowserMAP.Location = new System.Drawing.Point(211, 23);
+            this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserMAP.Name = "webBrowserMAP";
+            this.webBrowserMAP.Size = new System.Drawing.Size(446, 326);
+            this.webBrowserMAP.TabIndex = 3;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(930, 460);
@@ -563,5 +576,6 @@
         private System.Windows.Forms.Panel panelEmpty;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.WebBrowser webBrowserMAP;
     }
 }

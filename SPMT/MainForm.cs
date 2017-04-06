@@ -67,7 +67,9 @@ namespace SPMT
                 
                 richTextBox2.Text+=z.Odbiorca.Adres.ToString()+"\n";
             }
-
+            //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
+            StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Empire%20state%20building,New+York,NY&zoom=13&size=600x300");
+            webBrowserMAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
         }
 
         // ZAMÓWIENIA I KLIENCI
@@ -130,6 +132,16 @@ namespace SPMT
         }
 
         private void buttonTrasaUsun_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupTrasa_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupMapa_Enter(object sender, EventArgs e)
         {
 
         }
