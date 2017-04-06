@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="GA_Adres.cs" />
     <Compile Include="GA_DaneTrasy.cs" />
+    <Compile Include="GA_PomiedzyAdresami.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

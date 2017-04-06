@@ -11,7 +11,7 @@ namespace SPMT
     {
         enum GET_DATA { TOWN, CZAS, DISTANCE, GEO_X, GEO_Y }
         private List<GA_Adres> lista_miast;                     // lista miast 
-        private GA_POMIEDZYMIASTAMI[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
+        private GA_Pomiedzy_Adresami[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
 
         public GA_DaneTrasy()
         {
@@ -43,12 +43,12 @@ namespace SPMT
                 int factorial = 1; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
                 for (int i = 1; i <= lista_miast.Count - 1; i++) { factorial *= i; }
 
-                Tab_Pom_Miast = new GA_POMIEDZYMIASTAMI[factorial];
+                Tab_Pom_Miast = new GA_Pomiedzy_Adresami[factorial];
                 for (int i = 0; i < lista_miast.Count; i++)
                 {
                     for (int j = i + 1; j < lista_miast.Count; j++)
                     {
-                        Tab_Pom_Miast[i] = new GA_POMIEDZYMIASTAMI(lista_miast[i].get_town(), lista_miast[j].get_town()); // wywolujemy konstruktor a on robi wszystko za nas :P
+                        Tab_Pom_Miast[i] = new GA_Pomiedzy_Adresami(lista_miast[i].get_town(), lista_miast[j].get_town()); // wywolujemy konstruktor a on robi wszystko za nas :P
                     }
                 }
             }
