@@ -77,6 +77,8 @@
     <Compile Include="FormKlient.Designer.cs">
       <DependentUpon>FormKlient.cs</DependentUpon>
     </Compile>
+    <Compile Include="GA_Adres.cs" />
+    <Compile Include="GA_DaneTrasy.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
