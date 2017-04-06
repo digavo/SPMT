@@ -73,11 +73,6 @@ namespace SPMT
             }
             //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
 
-            String miejsce = "Brooklyn+Bridge,New+York,NY";
-            String znacznik1 = "&markers = color:green | label:G | 40.711614,-74.012318";
-            String znacznik2 = "&markers = color:blue  | label:S | 40.702147,-74.015794"; 
-
-
            // StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);
 
 
@@ -87,44 +82,12 @@ namespace SPMT
                                                       //StringBuilder SB = new StringBuilder("https://www.google.pl/maps?q=");add.Append(punkt1);add.Append(punkt2);
             //StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,9z" + typpojazdu);
 
-            SetWebBrowserVersion(11001); // musi byc
+
+
+
+            //SetWebBrowserVersion(11001); // musi byc
             //webBrowserMAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
             webBrowserMAP.DocumentText = "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" >< head >< meta charset = \"utf-8\" /> < title ></ title > </ head >< body > < iframe width = \"600\"height = \"450\"frameborder = \"0\" style = \"border:0\"src = \"https://www.google.com/maps/embed/v1/place?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ& q = Space + Needle,Seattle + WA\" allowfullscreen></iframe> </ body ></ html > ";
-        }
-
-        // Set a registry DWORD value.
-        private void SetRegistryDword(string key_name,
-            string value_name, int value)
-        {
-            // Open the key.
-            RegistryKey key =
-                Registry.CurrentUser.OpenSubKey(key_name, true);
-            if (key == null)
-                key = Registry.CurrentUser.CreateSubKey(key_name,
-                    RegistryKeyPermissionCheck.ReadWriteSubTree);
-
-            // Set the desired value.
-            key.SetValue(value_name, value, RegistryValueKind.DWord);
-
-            key.Close();
-        }
-
-        // Make the WebBrowser control emulate the indicated IE version.
-        // See:
-        //http://msdn.microsoft.com/library/ee330730.aspx#browser_emulation
-        private void SetWebBrowserVersion(int ie_version)
-        {
-            const string key64bit =
-                @"SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\" +
-                @"MAIN\FeatureControl\FEATURE_BROWSER_EMULATION";
-            const string key32bit =
-                @"SOFTWARE\Microsoft\Internet Explorer\MAIN\" +
-                @"FeatureControl\FEATURE_BROWSER_EMULATION";
-            string app_name = System.AppDomain.CurrentDomain.FriendlyName;
-
-            // You can do both if you like.
-            SetRegistryDword(key64bit, app_name, ie_version);
-            SetRegistryDword(key32bit, app_name, ie_version);
         }
 
         // ZAMÓWIENIA I KLIENCI
