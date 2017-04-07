@@ -143,6 +143,18 @@ namespace SPMT
             }
             ctx.SaveChanges();
         }
+        private void buttonZamEdytuj_Click(object sender, EventArgs e)
+        {
+            /*FormZamówienie formularz = new FormZamówienie(ref ListaKlientów);
+            var dialogResult = formularz.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                ListaZamówień.Remove(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
+                ListaZamówień.Add(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
+            }
+            else if (dialogResult == DialogResult.Cancel)
+                return;*/
+        }
         private void buttonZamDodajDoTrasy_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
@@ -153,7 +165,7 @@ namespace SPMT
         }
         private void buttonZamDodajKlient_Click(object sender, EventArgs e)
         {
-            FormKlient formularz = new FormKlient();
+            FormKlient formularz = new FormKlient(false);
             var dialogResult = formularz.ShowDialog();
             if (dialogResult == DialogResult.OK)
                 ListaKlientów.Add(ctx.Klienci.Where(x => x.Id == formularz.klientId).First());
@@ -172,7 +184,25 @@ namespace SPMT
             }
             ctx.SaveChanges();
         }
-
+        private void buttonZamEdytujKlient_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count>1)
+            {
+                MessageBox.Show("Zaznacz jednego klienta do edycji");
+                return;
+            }
+            int curItem = dataGridView2.SelectedRows[0].Index;
+            FormKlient formularz = new FormKlient(true, ListaKlientów[curItem].Id);
+            var dialogResult = formularz.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                ctx = new TransportDbContext();
+                ListaKlientów[curItem] = ctx.Klienci.Where(x => x.Id == formularz.klientId).First();
+                dataGridView1.Refresh();
+            }
+            else if (dialogResult == DialogResult.Cancel)
+                return;
+        }
         // TRASA 
         private void buttonTrasaUsunZam_Click(object sender, EventArgs e)
         {
@@ -194,5 +224,7 @@ namespace SPMT
         {
 
         }
+
+        
     }
 }

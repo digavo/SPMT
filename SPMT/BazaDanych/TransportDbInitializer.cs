@@ -20,7 +20,7 @@ namespace SPMT
             Adres adres2 = new Adres() { Miasto = "Wrocław", KodPocztowy = "50-354", Ulica = "Sienkiewicza 10/3" };
             Klient klient2 = new Klient() { Nazwa = "Agnieszka Kot", NumerTelefonu = "222333444", Rodzaj = "Osoba", Adres = adres2 };
             Adres adres3 = new Adres() { Miasto = "Wrocław", KodPocztowy = "51-311", Ulica = "Mydlana 10" };
-            Klient klient3 = new Klient() { Nazwa = "Łucja Zalewska", NumerTelefonu = "211111111", Rodzaj = "Osoba", Adres = adres2 };
+            Klient klient3 = new Klient() { Nazwa = "Łucja Zalewska", NumerTelefonu = "211111111", Rodzaj = "Osoba", Adres = adres3 };
             context.Klienci.Add(klient);
             context.Klienci.Add(klient2);
             context.Klienci.Add(klient3);

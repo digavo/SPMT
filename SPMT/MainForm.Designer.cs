@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.groupMapa = new System.Windows.Forms.GroupBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControlZam = new System.Windows.Forms.TabControl();
@@ -65,7 +66,8 @@
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -189,6 +191,14 @@
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
             // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(6, 163);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(227, 112);
+            this.richTextBox3.TabIndex = 4;
+            this.richTextBox3.Text = "";
+            // 
             // webBrowserMAP
             // 
             this.webBrowserMAP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -216,11 +226,12 @@
             this.tabControlZam.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlZam.Name = "tabControlZam";
             this.tabControlZam.SelectedIndex = 0;
-            this.tabControlZam.Size = new System.Drawing.Size(144, 249);
+            this.tabControlZam.Size = new System.Drawing.Size(382, 249);
             this.tabControlZam.TabIndex = 15;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button13);
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
@@ -228,7 +239,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(136, 221);
+            this.tabPage1.Size = new System.Drawing.Size(374, 221);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -236,7 +247,7 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.Location = new System.Drawing.Point(208, 175);
+            this.button6.Location = new System.Drawing.Point(309, 175);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(125, 40);
             this.button6.TabIndex = 25;
@@ -283,18 +294,19 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(124, 163);
+            this.dataGridView1.Size = new System.Drawing.Size(362, 163);
             this.dataGridView1.TabIndex = 22;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button14);
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(136, 221);
+            this.tabPage2.Size = new System.Drawing.Size(374, 221);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Klienci";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -338,7 +350,7 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(124, 163);
+            this.dataGridView2.Size = new System.Drawing.Size(362, 163);
             this.dataGridView2.TabIndex = 23;
             // 
             // panelEmpty
@@ -496,13 +508,27 @@
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // richTextBox3
+            // button13
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(6, 163);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(227, 112);
-            this.richTextBox3.TabIndex = 4;
-            this.richTextBox3.Text = "";
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button13.Location = new System.Drawing.Point(208, 175);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(95, 40);
+            this.button13.TabIndex = 26;
+            this.button13.Text = "Edytuj";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.buttonZamEdytuj_Click);
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button14.Location = new System.Drawing.Point(208, 175);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(95, 40);
+            this.button14.TabIndex = 27;
+            this.button14.Text = "Edytuj";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.buttonZamEdytujKlient_Click);
             // 
             // MainForm
             // 
@@ -576,5 +602,7 @@
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.WebBrowser webBrowserMAP;
         private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
     }
 }

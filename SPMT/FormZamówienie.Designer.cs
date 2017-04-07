@@ -94,7 +94,7 @@
             this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(105, 84);
+            this.panel2.Location = new System.Drawing.Point(105, 85);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(303, 26);
@@ -163,7 +163,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 84);
+            this.label5.Location = new System.Drawing.Point(3, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 15);
             this.label5.TabIndex = 8;
@@ -181,7 +181,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 57);
+            this.label1.Location = new System.Drawing.Point(3, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 15);
             this.label1.TabIndex = 0;
@@ -190,7 +190,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 110);
+            this.label4.Location = new System.Drawing.Point(3, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 15);
             this.label4.TabIndex = 13;
@@ -199,7 +199,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 139);
+            this.label6.Location = new System.Drawing.Point(3, 138);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 15);
             this.label6.TabIndex = 12;
@@ -210,7 +210,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.numericUpDown2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(105, 139);
+            this.panel1.Location = new System.Drawing.Point(105, 138);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(303, 25);
@@ -263,7 +263,7 @@
             this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.CustomFormat = "HH:mm  dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(108, 60);
+            this.dateTimePicker1.Location = new System.Drawing.Point(108, 61);
             this.dateTimePicker1.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(136, 21);
@@ -276,7 +276,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "List",
             "Paczka"});
-            this.comboBox3.Location = new System.Drawing.Point(108, 113);
+            this.comboBox3.Location = new System.Drawing.Point(108, 114);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(96, 23);
             this.comboBox3.TabIndex = 5;
@@ -296,7 +296,7 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(143, 210);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 40);
