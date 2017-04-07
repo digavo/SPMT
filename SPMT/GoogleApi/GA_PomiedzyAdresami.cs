@@ -58,19 +58,19 @@ namespace SPMT
             this.status = false;
             this.miasto1 = new GA_Adres(m1);
             this.miasto2 = new GA_Adres(m2);
-            if (this.miasto1.result_status() == true && this.miasto2.result_status() == true)//miasta sa ok 
+            if (this.miasto1.resultStatus == true && this.miasto2.resultStatus == true)//miasta sa ok 
             {
                 this.dystans = GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_DISTANCE) / 1000;
                 double czasowka = Set_TimeSpan(GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_TIME));
                 if (this.dystans != 0 && czasowka != 0) { status = true; }
             }
         }                   // konstruktor polaczenie miedzy miastami 
-        public int get_time() { return this.czas.Hours * 60 + czas.Minutes; } //zwraca całkowity czas w minutach 
-        public int get_hour() { return this.czas.Hours; }                     //zwraca tylko godziny bez minut
-        public int get_min() { return this.czas.Minutes; }                     //zwraca tylko minuty bez godzin
-        public string get_miasto1() { return this.miasto1.get_town(); }                  // zwraca pierwsze z miast
-        public string get_miasto2() { return this.miasto2.get_town(); }                  // zwraca drugie z miast
-        public double get_dystans() { return this.dystans; }                      //zwraca droge pomiedzy nimi
-        public bool result_status() { return this.status; }
+        public int getTime { get { return this.czas.Hours * 60 + czas.Minutes; } } //zwraca całkowity czas w minutach 
+        public int getHour { get { return this.czas.Hours; } }                     //zwraca tylko godziny bez minut
+        public int getMin { get { return this.czas.Minutes; } }                  //zwraca tylko minuty bez godzin
+        public string getMiasto1 { get { return this.miasto1.getTown; } }              // zwraca pierwsze z miast
+        public string getMiasto2 { get { return this.miasto2.getTown; } }                 // zwraca drugie z miast
+        public double getDystans { get { return this.dystans; } }                    //zwraca droge pomiedzy nimi
+        public bool resultStatus { get { return this.status; } }
     }
 }

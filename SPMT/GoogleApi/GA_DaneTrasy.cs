@@ -11,7 +11,7 @@ namespace SPMT
     {
         enum GET_DATA { TOWN, CZAS, DISTANCE, GEO_X, GEO_Y }
         private List<GA_Adres> lista_miast;                     // lista miast 
-        private GA_Pomiedzy_Adresami[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
+        private GA_PomiedzyAdresami[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
 
         public GA_DaneTrasy()
         {
@@ -43,12 +43,12 @@ namespace SPMT
                 int factorial = 1; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
                 for (int i = 1; i <= lista_miast.Count - 1; i++) { factorial *= i; }
 
-                Tab_Pom_Miast = new GA_Pomiedzy_Adresami[factorial];
+                Tab_Pom_Miast = new GA_PomiedzyAdresami[factorial];
                 for (int i = 0; i < lista_miast.Count; i++)
                 {
                     for (int j = i + 1; j < lista_miast.Count; j++)
                     {
-                        Tab_Pom_Miast[i] = new GA_Pomiedzy_Adresami(lista_miast[i].get_town(), lista_miast[j].get_town()); // wywolujemy konstruktor a on robi wszystko za nas :P
+                        Tab_Pom_Miast[i] = new GA_PomiedzyAdresami(lista_miast[i].getTown, lista_miast[j].getTown); // wywolujemy konstruktor a on robi wszystko za nas :P
                     }
                 }
             }
@@ -58,7 +58,7 @@ namespace SPMT
             string daneIN = "";
             for (int i = 0; i < this.lista_miast.Count; i++)
             {
-                daneIN += this.lista_miast[i].get_town() + " [" + this.lista_miast[i].get_geoX() + " , " + this.lista_miast[i].get_geoY() + "] status=" + this.lista_miast[i].result_status().ToString() + "\n";
+                daneIN += this.lista_miast[i].getTown + " [" + this.lista_miast[i].getGeoX + " , " + this.lista_miast[i].getGeoY + "] status=" + this.lista_miast[i].resultStatus.ToString() + "\n";
             }
             return daneIN;
         }
@@ -67,7 +67,7 @@ namespace SPMT
             string daneOUT = "";
             for (int i = 0; i < Tab_Pom_Miast.Length; i++)
             {
-                daneOUT += Tab_Pom_Miast[i].get_miasto1() + "\t" + Tab_Pom_Miast[i].get_miasto2() + "\t" + Tab_Pom_Miast[i].get_dystans() + "km \t" + Tab_Pom_Miast[i].get_hour() + "h " + Tab_Pom_Miast[i].get_min() + "min \n";
+                daneOUT += Tab_Pom_Miast[i].getMiasto1 + "\t" + Tab_Pom_Miast[i].getMiasto2 + "\t" + Tab_Pom_Miast[i].getDystans + "km \t" + Tab_Pom_Miast[i].getHour + "h " + Tab_Pom_Miast[i].getMin + "min \n";
             }
             return daneOUT;
         }
@@ -75,8 +75,8 @@ namespace SPMT
         {
             if (lista_miast.Count >= 2)
             {
-                String punkt1 = lista_miast[0].get_town();// miasto  poczatkowe
-                String punkt2 = lista_miast[lista_miast.Count - 1].get_town(); // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
+                String punkt1 = lista_miast[0].getTown;// miasto  poczatkowe
+                String punkt2 = lista_miast[lista_miast.Count - 1].getTown; // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
                 String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
                                                           //StringBuilder SB = new StringBuilder("https://www.google.pl/maps?q=");add.Append(punkt1);add.Append(punkt2);
                 StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,11z" + typpojazdu);
@@ -90,7 +90,7 @@ namespace SPMT
         {
             if (lista_miast.Count > index_w_liscie)
             {
-                return lista_miast[index_w_liscie].get_geoX();
+                return lista_miast[index_w_liscie].getGeoX;
             }
             return 0;
         }
@@ -98,7 +98,7 @@ namespace SPMT
         {
             if (lista_miast.Count > index_w_liscie)
             {
-                return lista_miast[index_w_liscie].get_geoY();
+                return lista_miast[index_w_liscie].getGeoY;
             }
             return 0;
         }

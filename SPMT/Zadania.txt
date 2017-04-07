@@ -24,9 +24,12 @@ aktualnie Form1 - google maps, Form2 - bazy, MainForm - główny interfejs
 tylko poprzez stworzenie bazy od nowa (nie mamy dużo rekordów więc to nie problem)
 poprzez zmianę nazwy bazy : base("BazaKurier2") w  TransportDbContext 
 
-! baza tworzy się na (localdb)\v11.0, najlepiej podglądać ja przez 
-	VIEW > SQL Server Object Explorer > SQL Server > (localdb)\v11.0 > Databases
-	Jeżeli nie macie v11.0 w SQL Server Object Explorer na górze jest Add SQL Server i w Local powinno być 
+! baza tworzy się na (localdb)\MSSQLLocalDB, najlepiej podglądać ja przez 
+	VIEW > SQL Server Object Explorer > SQL Server > (localdb)\MSSQLLocalDB > Databases
+	Jeżeli nie macie MSSQLLocalDB w SQL Server Object Explorer na górze jest Add SQL Server i w Local powinno być 
+
+http://jaryl-lan.blogspot.com/2014/08/localdb-connection-to-localdb-failed.html  
+            
 _______________________________________________________
 
 1 INTERFEJS:

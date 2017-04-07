@@ -77,10 +77,16 @@
     <Compile Include="FormKlient.Designer.cs">
       <DependentUpon>FormKlient.cs</DependentUpon>
     </Compile>
-    <Compile Include="GA_Adres.cs" />
-    <Compile Include="GA_DaneTrasy.cs" />
-    <Compile Include="GA_PomiedzyAdresami.cs" />
-    <Compile Include="GA_View.cs" />
+    <Compile Include="FormZamówienie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormZamówienie.Designer.cs">
+      <DependentUpon>FormZamówienie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoogleApi\GA_Adres.cs" />
+    <Compile Include="GoogleApi\GA_DaneTrasy.cs" />
+    <Compile Include="GoogleApi\GA_PomiedzyAdresami.cs" />
+    <Compile Include="GoogleApi\GA_View.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormKlient.resx">
       <DependentUpon>FormKlient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormZamówienie.resx">
+      <DependentUpon>FormZamówienie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
