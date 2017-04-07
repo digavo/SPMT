@@ -183,9 +183,9 @@
             this.groupMapa.Controls.Add(this.richTextBox3);
             this.groupMapa.Controls.Add(this.webBrowserMAP);
             this.groupMapa.Controls.Add(this.richTextBox2);
-            this.groupMapa.Location = new System.Drawing.Point(360, 3);
+            this.groupMapa.Location = new System.Drawing.Point(388, 3);
             this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(405, 365);
+            this.groupMapa.Size = new System.Drawing.Size(377, 387);
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
             // 
@@ -197,7 +197,7 @@
             this.webBrowserMAP.Location = new System.Drawing.Point(239, 11);
             this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(160, 348);
+            this.webBrowserMAP.Size = new System.Drawing.Size(132, 370);
             this.webBrowserMAP.TabIndex = 3;
             // 
             // richTextBox2
@@ -338,7 +338,7 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(244, 163);
+            this.dataGridView2.Size = new System.Drawing.Size(124, 163);
             this.dataGridView2.TabIndex = 23;
             // 
             // panelEmpty

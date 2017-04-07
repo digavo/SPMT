@@ -41,6 +41,9 @@ namespace SPMT
             dataGridView2.Columns["Id"].Visible = false;
             dataGridView2.Columns["AdresId"].Visible = false;
             dataGridView1.DataSource = ListaZamówień;
+            dataGridView1.Columns["DataDostarczenia"].Visible = false;
+            dataGridView1.Columns["NadawcaId"].Visible = false;
+            dataGridView1.Columns["OdbiorcaId"].Visible = false;
         }
 
         //GOOGLE MAPS
@@ -81,13 +84,11 @@ namespace SPMT
             label2.Text = "Zamówienia";
             tabControlZam.BringToFront();
         }
-
         private void buttonTrasa_Click(object sender, EventArgs e)
         {
             label2.Text = "Trasa";
             groupTrasa.BringToFront();
         }
-
         private void buttonMapa_Click(object sender, EventArgs e)
         {
             label2.Text = "Mapa";
@@ -122,18 +123,26 @@ namespace SPMT
         // ZAMÓWIENIA I KLIENCI
         private void buttonZamDodaj_Click(object sender, EventArgs e)
         {
+            FormZamówienie formularz = new FormZamówienie(ref ListaKlientów);
+            var dialogResult = formularz.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+                ListaZamówień.Add(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
+            else if (dialogResult == DialogResult.Cancel)
+                return;
 
         }
         private void buttonZamUsun_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
-            int curItem = dataGridView1.SelectedRows[0].Index;
-            Zamówienie z = ListaZamówień[curItem];
-            ListaZamówień.RemoveAt(curItem);
-            ctx.Zamówienia.Remove(z);
+            for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--) 
+            {
+                int curItem = dataGridView1.SelectedRows[i].Index;
+                Zamówienie z = ListaZamówień[curItem];
+                ListaZamówień.RemoveAt(curItem);
+                ctx.Zamówienia.Remove(z);
+            }
             ctx.SaveChanges();
         }
-
         private void buttonZamDodajDoTrasy_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
@@ -154,11 +163,13 @@ namespace SPMT
         private void buttonZamUsunKlient_Click(object sender, EventArgs e)
         {
             if (ListaKlientów.Count() == 0) return;
-            int curItem = dataGridView2.SelectedRows[0].Index;
-            Klient k = ListaKlientów[curItem];
-            ListaKlientów.RemoveAt(curItem);
-            //ctx.Adresy.Remove(k.Adres);
-            ctx.Klienci.Remove(k);
+            for (int i = dataGridView2.SelectedRows.Count - 1; i >= 0; i--)
+            {
+                int curItem = dataGridView2.SelectedRows[i].Index;
+                Klient k = ListaKlientów[curItem];
+                ListaKlientów.RemoveAt(curItem);
+                ctx.Klienci.Remove(k);
+            }
             ctx.SaveChanges();
         }
 
