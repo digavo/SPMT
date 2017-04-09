@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SPMT
 {
-    public partial class MainForm : Form 
+    public partial class MainForm : Form
     {
         private BindingList<Klient> ListaKlientów = new BindingList<Klient>();
         private BindingList<Zamówienie> ListaZamówień = new BindingList<Zamówienie>();
@@ -34,7 +34,7 @@ namespace SPMT
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
                 ListaZamówień.Add(z);
-            
+
             listBox1.DataSource = ListaTrasy;
             listBox2.DataSource = ListaZamówień;
             dataGridView2.DataSource = ListaKlientów;
@@ -97,7 +97,7 @@ namespace SPMT
             richTextBox3.Text = "";
             foreach (var z in ListaTrasy)
             {
-                richTextBox2.Text+=z.Odbiorca.Adres.ToString()+"\n";
+                richTextBox2.Text += z.Odbiorca.Adres.ToString() + "\n";
             }
 
             GA_DaneTrasy mydt = new GA_DaneTrasy();
@@ -118,8 +118,8 @@ namespace SPMT
             mylistka.Add("Kraków");
             mylistka.Add("Łódź");
             mylistka.Add("Wrocław");
-            */
 
+            */
 
 
             //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
@@ -207,7 +207,7 @@ namespace SPMT
         }
         private void buttonZamEdytujKlient_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedRows.Count>1)
+            if (dataGridView2.SelectedRows.Count > 1)
             {
                 MessageBox.Show("Zaznacz jednego klienta do edycji");
                 return;
@@ -228,12 +228,12 @@ namespace SPMT
         private void buttonTrasaUsunZam_Click(object sender, EventArgs e)
         {
             if (ListaTrasy.Count() == 0) return;
-            ListaTrasy.Remove( (Zamówienie)listBox1.SelectedItem);
+            ListaTrasy.Remove((Zamówienie)listBox1.SelectedItem);
         }
         private void buttonTrasaDodajZam_Click(object sender, EventArgs e)
         {
             if (ListaZamówień.Count() == 0) return;
-            Zamówienie z = (Zamówienie) listBox2.SelectedItem;
+            Zamówienie z = (Zamówienie)listBox2.SelectedItem;
             if (!ListaTrasy.Contains(z))
                 ListaTrasy.Add(z);
         }
@@ -246,6 +246,6 @@ namespace SPMT
 
         }
 
-        
+
     }
 }
