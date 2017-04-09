@@ -93,6 +93,8 @@ namespace SPMT
         {
             label2.Text = "Mapa";
             groupMapa.BringToFront();
+            GA_DaneTrasy mydt = new GA_DaneTrasy();
+
             richTextBox2.Text = "";
             richTextBox3.Text = "";
             foreach (var z in ListaTrasy)
@@ -100,45 +102,15 @@ namespace SPMT
                 richTextBox2.Text += z.Odbiorca.Adres.ToString() + "\n";
             }
 
-            GA_DaneTrasy mydt = new GA_DaneTrasy();
             mydt.ADD_LIST("Wrocław");
             mydt.ADD_LIST("Opole");
             mydt.ADD_LIST("Kraków");
             mydt.ADD_LIST("Łódź");
-            //mydt.ADD_LIST("Wrocław");
+            mydt.ADD_LIST("Kielce");
             mydt.Dane_googleAPI_read();
-            MessageBox.Show(mydt.DANE_IN());
-            MessageBox.Show(mydt.DANE_OUT());
+            //MessageBox.Show(mydt.DANE_IN());
+            //MessageBox.Show(mydt.DANE_OUT());
             mydt.showTrasa(webBrowserMAP);
-
-            /*
-            List<string> mylistka= new List<string>();
-            mylistka.Add("Wrocław");
-            mylistka.Add("Opole");
-            mylistka.Add("Kraków");
-            mylistka.Add("Łódź");
-            mylistka.Add("Wrocław");
-
-            */
-
-
-            //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
-
-            // StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);
-
-
-            //String punkt1 ="Wroclaw";// miasto  poczatkowe
-            //String punkt2 = "Opole"; // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
-            //String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
-            //StringBuilder SB = new StringBuilder("https://www.google.pl/maps?q=");add.Append(punkt1);add.Append(punkt2);
-            //StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,9z" + typpojazdu);
-
-
-            //webBrowserMAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
-            // webBrowserMAP.DocumentText = "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" >< head >< meta charset = \"utf-8\" /> < title ></ title > </ head >< body > < iframe width = \"600\"height = \"450\"frameborder = \"0\" style = \"border:0\"src = \"https://www.google.com/maps/embed/v1/place?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ& q = Space + Needle,Seattle + WA\" allowfullscreen></iframe> </ body ></ html > ";
-            SetWebBrowserVersion(11001); // musi byc
-            string curDir = Directory.GetCurrentDirectory();
-            webBrowserMAP.Url = new Uri(String.Format("file:///{0}/mapa.html", curDir));
         }
 
         // ZAMÓWIENIA I KLIENCI
