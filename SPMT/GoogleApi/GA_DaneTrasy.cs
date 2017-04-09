@@ -54,6 +54,20 @@ namespace SPMT
                         iter++;
                     }
                 }
+                //sprawdzenie czy jest ok
+                for(int i=0;i<l_pol;i++)
+                {
+                    if(Tab_Pom_Miast[i].resultStatus==false)
+                    {
+                        for (int j=0;j<10;j++)
+                        {
+                            Tab_Pom_Miast[i] = new GA_PomiedzyAdresami(Tab_Pom_Miast[i].getMiasto1, Tab_Pom_Miast[i].getMiasto2);
+                            if(Tab_Pom_Miast[i].resultStatus == true) { j = 10; }
+                        }
+                        if (Tab_Pom_Miast[i].resultStatus == false) { MessageBox.Show("Nie mozna odczytać dla połączenia: " + Tab_Pom_Miast[i].getMiasto1.ToString() + " i " + Tab_Pom_Miast[i].getMiasto2.ToString()); }
+                    }
+                }
+
             }
         }
         public string DANE_IN()// komunikat ktory pozwala w szybki sposob zweryfikowac czy wspolrzedne miasta zostaly wyszukane poprawnie 
