@@ -100,6 +100,14 @@ namespace SPMT
                 richTextBox2.Text+=z.Odbiorca.Adres.ToString()+"\n";
             }
 
+            GA_DaneTrasy mydt = new GA_DaneTrasy();
+            mydt.ADD_LIST("Wrocław");
+            mydt.ADD_LIST("Opole");
+            mydt.ADD_LIST("Kraków");
+            mydt.ADD_LIST("Łódź");
+            //mydt.ADD_LIST("Wrocław");
+            mydt.Dane_googleAPI_read();
+            MessageBox.Show(mydt.DANE_OUT());
 
             List<string> mylistka= new List<string>();
             mylistka.Add("Wrocław");

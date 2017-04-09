@@ -28,8 +28,8 @@ namespace SPMT
         }
         public void ADD_LIST(string s)
         {
-            GA_Adres GAM = new GA_Adres(s);
-            this.lista_miast.Add(GAM);
+            //GA_Adres GAM = new GA_Adres(s);
+            this.lista_miast.Add(new GA_Adres(s));
         }
         public void DEL_LIST(string s)
         {
@@ -40,15 +40,17 @@ namespace SPMT
         {
             if (lista_miast.Count >= 2)
             {
-                int factorial = 1; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
-                for (int i = 1; i <= lista_miast.Count - 1; i++) { factorial *= i; }
-                MessageBox.Show(factorial.ToString());
-                Tab_Pom_Miast = new GA_PomiedzyAdresami[factorial];
+                int l_pol = 0; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
+                for (int i = 0; i <= lista_miast.Count-1; i++) { l_pol += i; }
+                MessageBox.Show("lpol="+l_pol.ToString());
+                Tab_Pom_Miast = new GA_PomiedzyAdresami[l_pol];
+                int iter = 0;
                 for (int i = 0; i < lista_miast.Count; i++)
                 {
                     for (int j = i + 1; j < lista_miast.Count; j++)
                     {
-                        Tab_Pom_Miast[i] = new GA_PomiedzyAdresami(lista_miast[i].getTown, lista_miast[j].getTown); // wywolujemy konstruktor a on robi wszystko za nas :P
+                        Tab_Pom_Miast[iter] = new GA_PomiedzyAdresami(lista_miast[i].getTown, lista_miast[j].getTown); // wywolujemy konstruktor a on robi wszystko za nas :P
+                        iter++;
                     }
                 }
             }
@@ -65,7 +67,7 @@ namespace SPMT
         public string DANE_OUT()// komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
         {
             string daneOUT = "";
-            MessageBox.Show(Tab_Pom_Miast.Length.ToString());
+            //MessageBox.Show(Tab_Pom_Miast.Length.ToString());
             for (int i = 0; i < Tab_Pom_Miast.Length; i++)
             {
                 daneOUT += Tab_Pom_Miast[i].getMiasto1+ "\t";
