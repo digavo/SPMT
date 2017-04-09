@@ -95,8 +95,7 @@ namespace SPMT
             groupMapa.BringToFront();
             GA_DaneTrasy mydt = new GA_DaneTrasy();
 
-            //richTextBox2.Text = "";
-            //richTextBox3.Text = "";
+            richTextBox2.Text = "";
             foreach (var z in ListaTrasy)
             {
                 mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
@@ -109,7 +108,7 @@ namespace SPMT
             //mydt.ADD_LIST("Łódź");
             //mydt.ADD_LIST("Kielce");
             //mydt.Dane_googleAPI_read();
-            MessageBox.Show(mydt.DANE_IN());
+            //MessageBox.Show(mydt.DANE_IN());
             //MessageBox.Show(mydt.DANE_OUT());
             mydt.showTrasa(webBrowserMAP);
         }
