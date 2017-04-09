@@ -13,11 +13,8 @@ namespace SPMT
     {
         private string DOTNET2HTML;
 
-        public void dynmap_show(WebBrowser webB)
+        public void dynmap_show(List<string> miasta, WebBrowser webB)
         {
-
-            string m1, m2;
-
             DOTNET2HTML = "";
             DOTNET2HTML += "< !DOCTYPE html >" +
  "< html >" + "< head >" +
@@ -38,32 +35,30 @@ namespace SPMT
 "zoom: 7," +
 "center: { lat: 51.11, lng: 17.03}" +
 "});" +
-"directionsDisplay.setMap(map);" +
-"var onChangeHandler = function() {" +
-"calculateAndDisplayRoute(directionsService, directionsDisplay);" +
-"};" +
-
-"document.getElementById('start').addEventListener('change', onChangeHandler);" +
-"document.getElementById('via').addEventListener('change', onChangeHandler);" +
-"document.getElementById('via2').addEventListener('change', onChangeHandler);" +
-"document.getElementById('end').addEventListener('change', onChangeHandler);" +
-"}"+
-
+"directionsDisplay.setMap(map);" + "calculateAndDisplayRoute(directionsService, directionsDisplay);" +
 "function calculateAndDisplayRoute(directionsService, directionsDisplay) {" +
-"directionsService.route({" +
-"origin: document.getElementById('start').value," +
-"destination: document.getElementById('end').value," +
-"waypoints: [{ location: document.getElementById('via').value }, { location: document.getElementById('via2').value }]," +
-"travelMode: 'DRIVING'}," +
-"function(response, status) {" +
-"if (status === 'OK'){directionsDisplay.setDirections(response);}" +
-"else{window.alert('Directions request failed due to ' + status);}" +
-"});}" +
-"</script>" +
-@"<script async defer src = ""https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ&callback=initMap"">" +
-"</script>" +
-"</body>" +
-"</html>";
+            "directionsService.route({";
+
+            DOTNET2HTML += "origin: '" + miasta[0] + "'";
+            DOTNET2HTML += "destination: '" + miasta[miasta.Count - 1] + "'";
+
+            DOTNET2HTML += "waypoints: [{ location: '" + miasta[1] + "' }";
+            for (int i = 2; i < miasta.Count; i++)
+            {
+                DOTNET2HTML += ", { location: '" + miasta[i] + "' }";
+            }
+            DOTNET2HTML += "],";
+
+            DOTNET2HTML += "travelMode: 'DRIVING'}," +
+           "function(response, status) {" +
+           "if (status === 'OK'){directionsDisplay.setDirections(response);}" +
+           "else{window.alert('Directions request failed due to ' + status);}" +
+           "});}" +
+           "</script>" +
+           @"<script async defer src = ""https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ&callback=initMap"">" +
+           "</script>" +
+           "</body>" +
+           "</html>";
 
             SetWebBrowserVersion(11001); // musi byc
             File.WriteAllText(@"HTMLPage1.html", DOTNET2HTML.ToString());

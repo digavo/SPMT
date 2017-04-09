@@ -42,7 +42,7 @@ namespace SPMT
             if (lista_miast.Count >= 2)
             {
                 int l_pol = 0; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
-                for (int i = 0; i <= lista_miast.Count-1; i++) { l_pol += i; }
+                for (int i = 0; i <= lista_miast.Count - 1; i++) { l_pol += i; }
                 //MessageBox.Show("lpol="+l_pol.ToString());
                 Tab_Pom_Miast = new GA_PomiedzyAdresami[l_pol];
                 int iter = 0;
@@ -55,14 +55,14 @@ namespace SPMT
                     }
                 }
                 //sprawdzenie czy jest ok
-                for(int i=0;i<l_pol;i++)
+                for (int i = 0; i < l_pol; i++)
                 {
-                    if(Tab_Pom_Miast[i].resultStatus==false)
+                    if (Tab_Pom_Miast[i].resultStatus == false)
                     {
-                        for (int j=0;j<10;j++)
+                        for (int j = 0; j < 10; j++)
                         {
                             Tab_Pom_Miast[i] = new GA_PomiedzyAdresami(Tab_Pom_Miast[i].getMiasto1, Tab_Pom_Miast[i].getMiasto2);
-                            if(Tab_Pom_Miast[i].resultStatus == true) { j = 10; }
+                            if (Tab_Pom_Miast[i].resultStatus == true) { j = 10; }
                         }
                         if (Tab_Pom_Miast[i].resultStatus == false) { MessageBox.Show("Nie mozna odczytać dla połączenia: " + Tab_Pom_Miast[i].getMiasto1.ToString() + " i " + Tab_Pom_Miast[i].getMiasto2.ToString()); }
                     }
@@ -84,7 +84,7 @@ namespace SPMT
             string daneOUT = "";
             for (int i = 0; i < Tab_Pom_Miast.Length; i++)
             {
-                daneOUT += Tab_Pom_Miast[i].getMiasto1+ "\t";
+                daneOUT += Tab_Pom_Miast[i].getMiasto1 + "\t";
                 daneOUT += Tab_Pom_Miast[i].getMiasto2 + "\t";
                 daneOUT += Tab_Pom_Miast[i].getDystans + "km \t";
                 daneOUT += Tab_Pom_Miast[i].getHour + "h ";
@@ -96,8 +96,10 @@ namespace SPMT
         {
             if (lista_miast.Count >= 2)
             {
+                List<string> lm = new List<string>();
+                for (int i = 0; i < lista_miast.Count; i++) { lm.Add(lista_miast[i].getTown); }
                 ga_mapka = new GA_View();
-                ga_mapka.dynmap_show(WB);
+                ga_mapka.dynmap_show(lm, WB);
             }
             else { MessageBox.Show("bledna liczba miast"); }
         }
