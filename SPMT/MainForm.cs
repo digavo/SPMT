@@ -108,9 +108,9 @@ namespace SPMT
             mylistka.Add("Łódź");
             mylistka.Add("Wrocław");
 
+            GA_View megaviwe = new GA_View();
+            megaviwe.dynmap_init(webBrowserMAP);
 
-
-            
 
             //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
 

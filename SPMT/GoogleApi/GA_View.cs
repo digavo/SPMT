@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace SPMT
     {
         private string DOTNET2HTML;
 
-        void dynmap_init()
+        public void dynmap_init(WebBrowser webB)
         {
             DOTNET2HTML = "";
             DOTNET2HTML += "< !DOCTYPE html >" +
@@ -27,6 +28,72 @@ namespace SPMT
 "<body>" +
 
 
+ @"<div id=""floating-panel"">" +
+        "<b>Start: </b>" +
+        @"<select id=""start"">" +
+            @"<option value=""chicago, il"">Chicago</option>" +
+            @"<option value=""st louis, mo"">St Louis</option>" +
+            @"<option value=""joplin, mo"">Joplin, MO</option>" +
+            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
+            @"<option value=""amarillo, tx"">Amarillo</option>" +
+            @"<option value=""gallup, nm"">Gallup, NM</option>" +
+            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
+            @"<option value=""winona, az"">Winona</option>" +
+            @"<option value=""kingman, az"">Kingman</option>" +
+            @"<option value=""barstow, ca"">Barstow</option>" +
+            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
+            @"<option value=""los angeles, ca"">Los Angeles</option>" +
+        "</select>" +
+        "<b>Via: </b>" +
+        @"<select id=""via"">" +
+            @"<option value=""chicago, il"">Chicago</option>" +
+            @"<option value=""st louis, mo"">St Louis</option>" +
+            @"<option value=""joplin, mo"">Joplin, MO</option>" +
+            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
+            @"<option value=""amarillo, tx"">Amarillo</option>" +
+            @"<option value=""gallup, nm"">Gallup, NM</option>" +
+            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
+            @"<option value=""winona, az"">Winona</option>" +
+            @"<option value=""kingman, az"">Kingman</option>" +
+            @"<option value=""barstow, ca"">Barstow</option>" +
+            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
+            @"<option value=""los angeles, ca"">Los Angeles</option>" +
+        "</select>" +
+        "<b>Via2: </b>" +
+        @"<select id=""via2"">" +
+            @"<option value=""chicago, il"">Chicago</option>" +
+            @"<option value=""st louis, mo"">St Louis</option>" +
+            @"<option value=""joplin, mo"">Joplin, MO</option>" +
+            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
+            @"<option value=""amarillo, tx"">Amarillo</option>" +
+            @"<option value=""gallup, nm"">Gallup, NM</option>" +
+            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
+            @"<option value=""winona, az"">Winona</option>" +
+            @"<option value=""kingman, az"">Kingman</option>" +
+            @"<option value=""barstow, ca"">Barstow</option>" +
+            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
+            @"<option value=""los angeles, ca"">Los Angeles</option>" +
+        "</select>" +
+        "<b>End: </b>" +
+        @"<select id=""end"">" +
+            @"<option value=""chicago, il"">Chicago</option>" +
+            @"<option value=""st louis, mo"">St Louis</option>" +
+            @"<option value=""joplin, mo"">Joplin, MO</option>" +
+            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
+            @"<option value=""amarillo, tx"">Amarillo</option>" +
+            @"<option value=""gallup, nm"">Gallup, NM</option>" +
+            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
+            @"<option value=""winona, az"">Winona</option>" +
+            @"<option value=""kingman, az"">Kingman</option>" +
+            @"<option value=""barstow, ca"">Barstow</option>" +
+            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
+            @"<option value=""los angeles, ca"">Los Angeles</option>" +
+        "</select>" +
+
+
+
+
+
  "</div>" + @"<div id=""map"">" + "</div>" + "<script>" +
 "function initMap() {" +
 "var directionsService = new google.maps.DirectionsService;" +
@@ -38,12 +105,35 @@ namespace SPMT
 "directionsDisplay.setMap(map);" +
 "var onChangeHandler = function() {" +
 "calculateAndDisplayRoute(directionsService, directionsDisplay);" +
-"};"+
+"};" +
+"document.getElementById('start').addEventListener('change', onChangeHandler);" +
+"document.getElementById('via').addEventListener('change', onChangeHandler);" +
+"document.getElementById('via2').addEventListener('change', onChangeHandler);" +
+"document.getElementById('end').addEventListener('change', onChangeHandler);" +
+"}"+
 
 
+"function calculateAndDisplayRoute(directionsService, directionsDisplay) {" +
+"directionsService.route({" +
+"origin: document.getElementById('start').value," +
+"destination: document.getElementById('end').value," +
+"waypoints: [{ location: document.getElementById('via').value }, { location: document.getElementById('via2').value }]," +
+"travelMode: 'DRIVING'}," +
+"function(response, status) {" +
+"if (status === 'OK'){directionsDisplay.setDirections(response);}" +
+"else{window.alert('Directions request failed due to ' + status);}" +
+"});}" +
+"</script>" +
+@"<script async defer src = ""https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ&callback=initMap"">" +
+"</script>" +
+"</body>" +
+"</html>";
 
 
-
+            File.WriteAllText(@"HTMLPage1.html", DOTNET2HTML.ToString());
+            //webB.Url = new Uri(String.Format(@"HTMLPage1.html"));
+            string curDir = Directory.GetCurrentDirectory();
+            webB.Url = new Uri(String.Format("file:///{0}/HTMLPage1.html", curDir));
         }
 
 
