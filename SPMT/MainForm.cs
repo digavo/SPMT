@@ -101,6 +101,17 @@ namespace SPMT
             }
 
 
+            List<string> mylistka= new List<string>();
+            mylistka.Add("Wrocław");
+            mylistka.Add("Opole");
+            mylistka.Add("Kraków");
+            mylistka.Add("Łódź");
+            mylistka.Add("Wrocław");
+
+
+
+            
+
             //StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:S|40.702147,-74.015794&markers=color:green|label:G|40.711614,-74.012318");
 
             // StringBuilder SB = new StringBuilder("https://maps.googleapis.com/maps/api/staticmap?center="+miejsce+"&zoom=13&size=600x300"+znacznik1+znacznik2);

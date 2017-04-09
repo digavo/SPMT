@@ -42,7 +42,7 @@ namespace SPMT
             {
                 int factorial = 1; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
                 for (int i = 1; i <= lista_miast.Count - 1; i++) { factorial *= i; }
-
+                MessageBox.Show(factorial.ToString());
                 Tab_Pom_Miast = new GA_PomiedzyAdresami[factorial];
                 for (int i = 0; i < lista_miast.Count; i++)
                 {
@@ -65,9 +65,14 @@ namespace SPMT
         public string DANE_OUT()// komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
         {
             string daneOUT = "";
+            MessageBox.Show(Tab_Pom_Miast.Length.ToString());
             for (int i = 0; i < Tab_Pom_Miast.Length; i++)
             {
-                daneOUT += Tab_Pom_Miast[i].getMiasto1 + "\t" + Tab_Pom_Miast[i].getMiasto2 + "\t" + Tab_Pom_Miast[i].getDystans + "km \t" + Tab_Pom_Miast[i].getHour + "h " + Tab_Pom_Miast[i].getMin + "min \n";
+                daneOUT += Tab_Pom_Miast[i].getMiasto1+ "\t";
+                daneOUT += Tab_Pom_Miast[i].getMiasto2 + "\t";
+                daneOUT += Tab_Pom_Miast[i].getDystans + "km \t";
+                daneOUT += Tab_Pom_Miast[i].getHour + "h ";
+                daneOUT += Tab_Pom_Miast[i].getMin + "min \n";
             }
             return daneOUT;
         }
