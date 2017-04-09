@@ -13,8 +13,11 @@ namespace SPMT
     {
         private string DOTNET2HTML;
 
-        public void dynmap_init(WebBrowser webB)
+        public void dynmap_show(WebBrowser webB)
         {
+
+            string m1, m2;
+
             DOTNET2HTML = "";
             DOTNET2HTML += "< !DOCTYPE html >" +
  "< html >" + "< head >" +
@@ -27,91 +30,24 @@ namespace SPMT
 "</head>" +
 "<body>" +
 
-
- @"<div id=""floating-panel"">" +
-        "<b>Start: </b>" +
-        @"<select id=""start"">" +
-            @"<option value=""chicago, il"">Chicago</option>" +
-            @"<option value=""st louis, mo"">St Louis</option>" +
-            @"<option value=""joplin, mo"">Joplin, MO</option>" +
-            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
-            @"<option value=""amarillo, tx"">Amarillo</option>" +
-            @"<option value=""gallup, nm"">Gallup, NM</option>" +
-            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
-            @"<option value=""winona, az"">Winona</option>" +
-            @"<option value=""kingman, az"">Kingman</option>" +
-            @"<option value=""barstow, ca"">Barstow</option>" +
-            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
-            @"<option value=""los angeles, ca"">Los Angeles</option>" +
-        "</select>" +
-        "<b>Via: </b>" +
-        @"<select id=""via"">" +
-            @"<option value=""chicago, il"">Chicago</option>" +
-            @"<option value=""st louis, mo"">St Louis</option>" +
-            @"<option value=""joplin, mo"">Joplin, MO</option>" +
-            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
-            @"<option value=""amarillo, tx"">Amarillo</option>" +
-            @"<option value=""gallup, nm"">Gallup, NM</option>" +
-            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
-            @"<option value=""winona, az"">Winona</option>" +
-            @"<option value=""kingman, az"">Kingman</option>" +
-            @"<option value=""barstow, ca"">Barstow</option>" +
-            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
-            @"<option value=""los angeles, ca"">Los Angeles</option>" +
-        "</select>" +
-        "<b>Via2: </b>" +
-        @"<select id=""via2"">" +
-            @"<option value=""chicago, il"">Chicago</option>" +
-            @"<option value=""st louis, mo"">St Louis</option>" +
-            @"<option value=""joplin, mo"">Joplin, MO</option>" +
-            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
-            @"<option value=""amarillo, tx"">Amarillo</option>" +
-            @"<option value=""gallup, nm"">Gallup, NM</option>" +
-            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
-            @"<option value=""winona, az"">Winona</option>" +
-            @"<option value=""kingman, az"">Kingman</option>" +
-            @"<option value=""barstow, ca"">Barstow</option>" +
-            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
-            @"<option value=""los angeles, ca"">Los Angeles</option>" +
-        "</select>" +
-        "<b>End: </b>" +
-        @"<select id=""end"">" +
-            @"<option value=""chicago, il"">Chicago</option>" +
-            @"<option value=""st louis, mo"">St Louis</option>" +
-            @"<option value=""joplin, mo"">Joplin, MO</option>" +
-            @"<option value=""oklahoma city, ok"">Oklahoma City</option>" +
-            @"<option value=""amarillo, tx"">Amarillo</option>" +
-            @"<option value=""gallup, nm"">Gallup, NM</option>" +
-            @"<option value=""flagstaff, az"">Flagstaff, AZ</option>" +
-            @"<option value=""winona, az"">Winona</option>" +
-            @"<option value=""kingman, az"">Kingman</option>" +
-            @"<option value=""barstow, ca"">Barstow</option>" +
-            @"<option value=""san bernardino, ca"">San Bernardino</option>" +
-            @"<option value=""los angeles, ca"">Los Angeles</option>" +
-        "</select>" +
-
-
-
-
-
  "</div>" + @"<div id=""map"">" + "</div>" + "<script>" +
 "function initMap() {" +
 "var directionsService = new google.maps.DirectionsService;" +
 "var directionsDisplay = new google.maps.DirectionsRenderer;" +
 "var map = new google.maps.Map(document.getElementById('map'), {" +
 "zoom: 7," +
-"center: { lat: 41.85, lng: -87.65}" +
+"center: { lat: 51.11, lng: 17.03}" +
 "});" +
 "directionsDisplay.setMap(map);" +
 "var onChangeHandler = function() {" +
 "calculateAndDisplayRoute(directionsService, directionsDisplay);" +
 "};" +
+
 "document.getElementById('start').addEventListener('change', onChangeHandler);" +
 "document.getElementById('via').addEventListener('change', onChangeHandler);" +
 "document.getElementById('via2').addEventListener('change', onChangeHandler);" +
 "document.getElementById('end').addEventListener('change', onChangeHandler);" +
 "}"+
-
 
 "function calculateAndDisplayRoute(directionsService, directionsDisplay) {" +
 "directionsService.route({" +
@@ -129,7 +65,7 @@ namespace SPMT
 "</body>" +
 "</html>";
 
-
+            SetWebBrowserVersion(11001); // musi byc
             File.WriteAllText(@"HTMLPage1.html", DOTNET2HTML.ToString());
             //webB.Url = new Uri(String.Format(@"HTMLPage1.html"));
             string curDir = Directory.GetCurrentDirectory();
@@ -165,6 +101,7 @@ namespace SPMT
             WB_MAP.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
 
         }
+        */
         private void SetRegistryDword(string key_name, string value_name, int value)
         {
             // Open the key.
@@ -193,6 +130,5 @@ namespace SPMT
             SetRegistryDword(key64bit, app_name, ie_version);
             SetRegistryDword(key32bit, app_name, ie_version);
         }
-        */
     }
 }

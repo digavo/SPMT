@@ -12,6 +12,7 @@ namespace SPMT
         enum GET_DATA { TOWN, CZAS, DISTANCE, GEO_X, GEO_Y }
         private List<GA_Adres> lista_miast;                     // lista miast 
         private GA_PomiedzyAdresami[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
+        private GA_View ga_mapka;
 
         public GA_DaneTrasy()
         {
@@ -81,12 +82,8 @@ namespace SPMT
         {
             if (lista_miast.Count >= 2)
             {
-                String punkt1 = lista_miast[0].getTown;// miasto  poczatkowe
-                String punkt2 = lista_miast[lista_miast.Count - 1].getTown; // miasto docelowe na razie tylko na pokaz by zobaczyc czy w aplikacji wyswoetla sie trasa
-                String typpojazdu = "/data=!4m2!4m1!3e0"; //wyznacza trase dlasamochodow 
-                                                          //StringBuilder SB = new StringBuilder("https://www.google.pl/maps?q=");add.Append(punkt1);add.Append(punkt2);
-                StringBuilder SB = new StringBuilder("https://www.google.pl/maps/dir/" + punkt1 + "/" + punkt2 + "@51.1270779,16.9918639,11z" + typpojazdu);
-                WB.Navigate(SB.ToString()); // wyswietla trase pomiedzy pierwszym i ostatnim miaste ma liscie reszte miast pomija
+                ga_mapka = new GA_View();
+                ga_mapka.dynmap_show(WB);
             }
             else { MessageBox.Show("bledna liczba miast"); }
         }
