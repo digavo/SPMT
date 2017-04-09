@@ -41,13 +41,15 @@ namespace SPMT
 
             DOTNET2HTML += "origin:'" + miasta[0] + "',";
             DOTNET2HTML += "destination:'" + miasta[miasta.Count - 1] + "',";
-
-            DOTNET2HTML += "waypoints:[{location:'" + miasta[1] + "'}";
-            for (int i = 2; i < miasta.Count-1; i++)
+            if (miasta.Count > 2)
             {
-                DOTNET2HTML += ",{location:'" + miasta[i] + "'}";
+                DOTNET2HTML += "waypoints:[{location:'" + miasta[1] + "'}";
+                for (int i = 2; i < miasta.Count - 1; i++)
+                {
+                    DOTNET2HTML += ",{location:'" + miasta[i] + "'}";
+                }
+                DOTNET2HTML += "],";
             }
-            DOTNET2HTML += "],";
             DOTNET2HTML += "travelMode:'DRIVING'},"+
            "function(response,status){"+
            "if(status==='OK'){directionsDisplay.setDirections(response);}"+

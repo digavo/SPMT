@@ -95,20 +95,21 @@ namespace SPMT
             groupMapa.BringToFront();
             GA_DaneTrasy mydt = new GA_DaneTrasy();
 
-            richTextBox2.Text = "";
-            richTextBox3.Text = "";
+            //richTextBox2.Text = "";
+            //richTextBox3.Text = "";
             foreach (var z in ListaTrasy)
             {
+                mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
                 richTextBox2.Text += z.Odbiorca.Adres.ToString() + "\n";
             }
 
-            mydt.ADD_LIST("Wrocław");
-            mydt.ADD_LIST("Opole");
-            mydt.ADD_LIST("Kraków");
-            mydt.ADD_LIST("Łódź");
-            mydt.ADD_LIST("Kielce");
-            mydt.Dane_googleAPI_read();
-            //MessageBox.Show(mydt.DANE_IN());
+            //mydt.ADD_LIST("Wrocław");
+            //mydt.ADD_LIST("Opole");
+            //mydt.ADD_LIST("Kraków");
+            //mydt.ADD_LIST("Łódź");
+            //mydt.ADD_LIST("Kielce");
+            //mydt.Dane_googleAPI_read();
+            MessageBox.Show(mydt.DANE_IN());
             //MessageBox.Show(mydt.DANE_OUT());
             mydt.showTrasa(webBrowserMAP);
         }
