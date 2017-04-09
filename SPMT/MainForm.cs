@@ -107,7 +107,7 @@ namespace SPMT
             mydt.ADD_LIST("Łódź");
             //mydt.ADD_LIST("Wrocław");
             mydt.Dane_googleAPI_read();
-            MessageBox.Show(mydt.DANE_OUT());
+            //MessageBox.Show(mydt.DANE_OUT());
 
             List<string> mylistka= new List<string>();
             mylistka.Add("Wrocław");

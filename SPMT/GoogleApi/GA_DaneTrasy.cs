@@ -42,7 +42,7 @@ namespace SPMT
             {
                 int l_pol = 0; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
                 for (int i = 0; i <= lista_miast.Count-1; i++) { l_pol += i; }
-                MessageBox.Show("lpol="+l_pol.ToString());
+                //MessageBox.Show("lpol="+l_pol.ToString());
                 Tab_Pom_Miast = new GA_PomiedzyAdresami[l_pol];
                 int iter = 0;
                 for (int i = 0; i < lista_miast.Count; i++)
@@ -67,7 +67,6 @@ namespace SPMT
         public string DANE_OUT()// komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
         {
             string daneOUT = "";
-            //MessageBox.Show(Tab_Pom_Miast.Length.ToString());
             for (int i = 0; i < Tab_Pom_Miast.Length; i++)
             {
                 daneOUT += Tab_Pom_Miast[i].getMiasto1+ "\t";
