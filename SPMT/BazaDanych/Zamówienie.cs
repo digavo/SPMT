@@ -25,7 +25,7 @@ namespace SPMT
         public int CzasDostarczenia { get; set; } //godziny, default = 72h
         public override string ToString()
         {
-            return String.Format("{0}; {1}; {2}; {3}gram", Id, Nadawca.Adres, RodzajPaczki, WagaPaczki);
+            return String.Format("{0}; {1}; {2}; {3}gram", Id, Odbiorca.Adres, RodzajPaczki, WagaPaczki != null ? WagaPaczki: 0);
         }
     }
 }

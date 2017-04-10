@@ -42,11 +42,13 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControlZam = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button13 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button14 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -66,8 +68,7 @@
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.labelBaza = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -170,10 +171,10 @@
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.groupTrasa);
             this.panelMain.Controls.Add(this.groupMapa);
             this.panelMain.Controls.Add(this.tabControlZam);
             this.panelMain.Controls.Add(this.panelEmpty);
-            this.panelMain.Controls.Add(this.groupTrasa);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(143, 34);
             this.panelMain.Name = "panelMain";
@@ -244,6 +245,17 @@
             this.tabPage1.Text = "Zamówienia";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button13
+            // 
+            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button13.Location = new System.Drawing.Point(208, 175);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(95, 40);
+            this.button13.TabIndex = 26;
+            this.button13.Text = "Edytuj";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.buttonZamEdytuj_Click);
+            // 
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -311,6 +323,17 @@
             this.tabPage2.Text = "Klienci";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button14.Location = new System.Drawing.Point(208, 175);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(95, 40);
+            this.button14.TabIndex = 27;
+            this.button14.Text = "Edytuj";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.buttonZamEdytujKlient_Click);
+            // 
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -362,6 +385,7 @@
             // 
             // groupTrasa
             // 
+            this.groupTrasa.Controls.Add(this.labelBaza);
             this.groupTrasa.Controls.Add(this.richTextBox1);
             this.groupTrasa.Controls.Add(this.button12);
             this.groupTrasa.Controls.Add(this.button11);
@@ -373,7 +397,7 @@
             this.groupTrasa.Controls.Add(this.label3);
             this.groupTrasa.Location = new System.Drawing.Point(153, 3);
             this.groupTrasa.Name = "groupTrasa";
-            this.groupTrasa.Size = new System.Drawing.Size(383, 387);
+            this.groupTrasa.Size = new System.Drawing.Size(414, 387);
             this.groupTrasa.TabIndex = 0;
             this.groupTrasa.TabStop = false;
             // 
@@ -389,7 +413,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(6, 189);
+            this.button12.Location = new System.Drawing.Point(6, 206);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(95, 40);
             this.button12.TabIndex = 29;
@@ -410,7 +434,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(282, 189);
+            this.button10.Location = new System.Drawing.Point(282, 206);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(95, 40);
             this.button10.TabIndex = 27;
@@ -435,7 +459,7 @@
             this.listBox2.ItemHeight = 15;
             this.listBox2.Items.AddRange(new object[] {
             "nr zamówienia / Adres"});
-            this.listBox2.Location = new System.Drawing.Point(282, 29);
+            this.listBox2.Location = new System.Drawing.Point(282, 61);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(270, 139);
             this.listBox2.TabIndex = 25;
@@ -446,7 +470,7 @@
             this.listBox1.ItemHeight = 15;
             this.listBox1.Items.AddRange(new object[] {
             "nr zamówienia / Adres"});
-            this.listBox1.Location = new System.Drawing.Point(6, 29);
+            this.listBox1.Location = new System.Drawing.Point(6, 61);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(270, 139);
             this.listBox1.TabIndex = 2;
@@ -454,7 +478,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(283, 11);
+            this.label4.Location = new System.Drawing.Point(283, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 15);
             this.label4.TabIndex = 1;
@@ -463,7 +487,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 11);
+            this.label3.Location = new System.Drawing.Point(7, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 15);
             this.label3.TabIndex = 0;
@@ -508,27 +532,15 @@
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // button13
+            // labelBaza
             // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button13.Location = new System.Drawing.Point(208, 175);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(95, 40);
-            this.button13.TabIndex = 26;
-            this.button13.Text = "Edytuj";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.buttonZamEdytuj_Click);
-            // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button14.Location = new System.Drawing.Point(208, 175);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(95, 40);
-            this.button14.TabIndex = 27;
-            this.button14.Text = "Edytuj";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.buttonZamEdytujKlient_Click);
+            this.labelBaza.AutoSize = true;
+            this.labelBaza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBaza.Location = new System.Drawing.Point(7, 17);
+            this.labelBaza.Name = "labelBaza";
+            this.labelBaza.Size = new System.Drawing.Size(82, 15);
+            this.labelBaza.TabIndex = 31;
+            this.labelBaza.Text = "Baza firmy: ";
             // 
             // MainForm
             // 
@@ -604,5 +616,6 @@
         private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label labelBaza;
     }
 }

@@ -35,11 +35,10 @@ _______________________________________________________
 1 INTERFEJS:
 + przyciski Zamówień (+Klientów), Trasy, Mapy -> nawigacja między zakładkami OK
 + pasek menu
++ formularz dodawania klientów, zamówień
 
 TODO:
-- opcje paska menu oprogramować
-- dodać obsługę przycisków 
-- formularz dodawania klientów, zamówień
+- opcje paska menu oprogramować (w ustawieniach zmiana adresu bazy?)
 - sortowanie zamówień
 - wizualizacja trasy
 
@@ -48,11 +47,12 @@ _______________________________________________________
 2 BAZA DANYCH:
 Code first, zawiera klasy:
 Adres, Klient, Zamówienie
++ wprowadzanie danych, usuwanie, edycja
++ adres bazy kuriera
++ ograniczenia czasu dostarczenia 
 
 TODO:
-- wprowadzanie danych, usuwanie, 
-- wprowadzenie bazy kuriera
-- ograniczenia czasu dostarczenia 
+
 _______________________________________________________
 
 3 Komiwojażer

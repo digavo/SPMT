@@ -21,6 +21,7 @@ namespace SPMT
         private BindingList<Zamówienie> ListaZamówień = new BindingList<Zamówienie>();
         private BindingList<Zamówienie> ListaTrasy = new BindingList<Zamówienie>();
         private TransportDbContext ctx = new TransportDbContext();
+        private Adres AdresBazy;
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +35,8 @@ namespace SPMT
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
                 ListaZamówień.Add(z);
-
+            AdresBazy = ctx.Adresy.First();
+            labelBaza.Text += AdresBazy.ToString();
             listBox1.DataSource = ListaTrasy;
             listBox2.DataSource = ListaZamówień;
             dataGridView2.DataSource = ListaKlientów;
@@ -93,9 +95,11 @@ namespace SPMT
         {
             label2.Text = "Mapa";
             groupMapa.BringToFront();
-            GA_DaneTrasy mydt = new GA_DaneTrasy();
-
             richTextBox2.Text = "";
+
+            GA_DaneTrasy mydt = new GA_DaneTrasy();
+            mydt.ADD_LIST(AdresBazy.ToString());
+            richTextBox2.Text += "Baza: "+AdresBazy.ToString() + "\n";
             foreach (var z in ListaTrasy)
             {
                 mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
@@ -110,13 +114,17 @@ namespace SPMT
             //mydt.Dane_googleAPI_read();
             //MessageBox.Show(mydt.DANE_IN());
             //MessageBox.Show(mydt.DANE_OUT());
+
+            richTextBox2.Text += "Baza: " + AdresBazy.ToString() + "\n";
+            mydt.ADD_LIST(AdresBazy.ToString());
+
             mydt.showTrasa(webBrowserMAP);
         }
 
         // ZAMÓWIENIA I KLIENCI
         private void buttonZamDodaj_Click(object sender, EventArgs e)
         {
-            FormZamówienie formularz = new FormZamówienie(ref ListaKlientów);
+            FormZamówienie formularz = new FormZamówienie(ref ListaKlientów, false);
             var dialogResult = formularz.ShowDialog();
             if (dialogResult == DialogResult.OK)
                 ListaZamówień.Add(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
@@ -138,15 +146,23 @@ namespace SPMT
         }
         private void buttonZamEdytuj_Click(object sender, EventArgs e)
         {
-            /*FormZamówienie formularz = new FormZamówienie(ref ListaKlientów);
+            if (dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Zaznacz jedno zamówienie do edycji");
+                return;
+            }
+            int curItem = dataGridView1.SelectedRows[0].Index;
+            FormZamówienie formularz = new FormZamówienie(ref ListaKlientów, true, ListaZamówień[curItem].Id);
+            
             var dialogResult = formularz.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                ListaZamówień.Remove(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
-                ListaZamówień.Add(ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First());
+                ctx = new TransportDbContext();
+                ListaZamówień[curItem] = ctx.Zamówienia.Where(x => x.Id == formularz.zamId).First();
+                dataGridView1.Refresh();
             }
             else if (dialogResult == DialogResult.Cancel)
-                return;*/
+                return;
         }
         private void buttonZamDodajDoTrasy_Click(object sender, EventArgs e)
         {
@@ -161,7 +177,9 @@ namespace SPMT
             FormKlient formularz = new FormKlient(false);
             var dialogResult = formularz.ShowDialog();
             if (dialogResult == DialogResult.OK)
-                ListaKlientów.Add(ctx.Klienci.Where(x => x.Id == formularz.klientId).First());
+            { ListaKlientów.Add(ctx.Klienci.Where(x => x.Id == formularz.klientId).First());
+                MessageBox.Show(formularz.klientId + " ");
+            }
             else if (dialogResult == DialogResult.Cancel)
                 return;
         }
@@ -172,8 +190,16 @@ namespace SPMT
             {
                 int curItem = dataGridView2.SelectedRows[i].Index;
                 Klient k = ListaKlientów[curItem];
-                ListaKlientów.RemoveAt(curItem);
-                ctx.Klienci.Remove(k);
+                var z = ctx.Zamówienia.Where(x => x.NadawcaId == k.Id || x.OdbiorcaId == k.Id).Count();
+                if (z>0) // klient jest w zamówieniu
+                {
+                    MessageBox.Show(k.Nazwa + ": Nie można usunąć klienta, który jest odbiorcą lub nadawcą zamówienia");
+                }
+                else
+                {
+                    ListaKlientów.RemoveAt(curItem);
+                    ctx.Klienci.Remove(k);
+                }
             }
             ctx.SaveChanges();
         }
@@ -191,7 +217,7 @@ namespace SPMT
             {
                 ctx = new TransportDbContext();
                 ListaKlientów[curItem] = ctx.Klienci.Where(x => x.Id == formularz.klientId).First();
-                dataGridView1.Refresh();
+                dataGridView2.Refresh();
             }
             else if (dialogResult == DialogResult.Cancel)
                 return;

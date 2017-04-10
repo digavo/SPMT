@@ -34,8 +34,6 @@ namespace SPMT
                     maskedTextBox2.Text = klient.NumerTelefonu;
                     if (klient.Rodzaj == "Firma") checkBox1.Checked = true;
                     klientId = klient.Id;
-
-                    //MessageBox.Show(" " + klient.Id + " " +klient.Nazwa);
                 }
             }
         }
@@ -47,7 +45,6 @@ namespace SPMT
                 return;
             }
             Adres adres = new Adres() { Miasto = textBox3.Text, Ulica = textBox2.Text, KodPocztowy = maskedTextBox1.Text };
-            Klient klient = new Klient() { Nazwa = textBox1.Text, Adres = adres, NumerTelefonu = maskedTextBox2.Text, Rodzaj = checkBox1.Checked ? "Firma":"Osoba" };
             using (var ctx = new TransportDbContext())
             {
                 if (edycja)
@@ -61,6 +58,7 @@ namespace SPMT
                 }
                 else
                 {
+                    Klient klient = new Klient() { Nazwa = textBox1.Text, Adres = adres, NumerTelefonu = maskedTextBox2.Text, Rodzaj = checkBox1.Checked ? "Firma" : "Osoba" };
                     ctx.Klienci.Add(klient);
                     klientId = klient.Id;
                     ctx.SaveChanges();
