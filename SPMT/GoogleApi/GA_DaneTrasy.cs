@@ -13,6 +13,62 @@ namespace SPMT
         private List<GA_Adres> lista_miast;                     // lista miast 
         private GA_PomiedzyAdresami[] Tab_Pom_Miast;            // tablica  zawierajaca odleglosci, czas i miasta potrzebne do komiwojarzera 
         private GA_View ga_mapka;
+        private double cala_droga_przejazdu;
+        private double caly_czas_przejazdu;
+        private TimeSpan caly_TiemSpan_przejazdu;
+
+        private double getS(string miasto1,string miasto2)
+        {
+           double droga = 0;
+            try
+            {
+                for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+                {
+                    if ((Tab_Pom_Miast[i].getMiasto1 == miasto1 && Tab_Pom_Miast[i].getMiasto2 == miasto2) || (Tab_Pom_Miast[i].getMiasto1 == miasto2 && Tab_Pom_Miast[i].getMiasto2 == miasto1))
+                    {
+                        return Tab_Pom_Miast[i].getDystans;
+                    }
+                }
+            }
+            catch { MessageBox.Show("Blad getST,Za malo punktow adresowych albo nie wywolano funkcji googleAPIRead "); }
+            //MessageBox.Show(s);
+            return droga;//s
+        }
+        private double getT(string miasto1, string miasto2)
+        {
+
+            double t = 0;
+            try
+            {
+                for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+                {
+                    if ((Tab_Pom_Miast[i].getMiasto1 == miasto1 && Tab_Pom_Miast[i].getMiasto2 == miasto2) || (Tab_Pom_Miast[i].getMiasto1 == miasto2 && Tab_Pom_Miast[i].getMiasto2 == miasto1))
+                    {
+                        return Tab_Pom_Miast[i].getDetailTime;
+                    }
+                }
+            }
+            catch { MessageBox.Show("Blad getST,Za malo punktow adresowych albo nie wywolano funkcji googleAPIRead "); }
+            //MessageBox.Show(s);
+            return t;
+        }
+        private TimeSpan getTimeSpan(string miasto1, string miasto2)
+        {
+            TimeSpan ts = new TimeSpan(0, 0, 0, 0);
+            try
+            {
+                for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+                {
+                    if ((Tab_Pom_Miast[i].getMiasto1 == miasto1 && Tab_Pom_Miast[i].getMiasto2 == miasto2) || (Tab_Pom_Miast[i].getMiasto1 == miasto2 && Tab_Pom_Miast[i].getMiasto2 == miasto1))
+                    {
+                        return Tab_Pom_Miast[i].getTimeSpan;
+                    }
+                }
+            }
+            catch { MessageBox.Show("Blad getST,Za malo punktow adresowych albo nie wywolano funkcji googleAPIRead "); }
+            //MessageBox.Show(s);
+            return ts;
+        }
 
         public GA_DaneTrasy()
         {
@@ -39,6 +95,7 @@ namespace SPMT
         }
         public void Dane_googleAPI_read()   // MAGIC !!! 
         {
+            caly_TiemSpan_przejazdu = new TimeSpan(0, 0, 0, 0);
             if (lista_miast.Count >= 2)
             {
                 int l_pol = 0; // silnia bo polaczen miedzymiastowych jest (n-1)! gdzie n to liczba miast
@@ -82,14 +139,19 @@ namespace SPMT
         public string DANE_OUT()// komunikat ktory pozwala w szybki sposob zobaczyc do zrobila metoda  Dane_googleAPI_read()
         {
             string daneOUT = "";
-            for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+            try
             {
-                daneOUT += Tab_Pom_Miast[i].getMiasto1 + "\t";
-                daneOUT += Tab_Pom_Miast[i].getMiasto2 + "\t";
-                daneOUT += Tab_Pom_Miast[i].getDystans + "km \t";
-                daneOUT += Tab_Pom_Miast[i].getHour + "h ";
-                daneOUT += Tab_Pom_Miast[i].getMin + "min \n";
+                for (int i = 0; i < Tab_Pom_Miast.Length; i++)
+                {
+                    daneOUT += Tab_Pom_Miast[i].getMiasto1 + "\t";
+                    daneOUT += Tab_Pom_Miast[i].getMiasto2 + "\t";
+                    daneOUT += Tab_Pom_Miast[i].getDystans + "km \t";
+                    daneOUT += Tab_Pom_Miast[i].getHour + "h ";
+                    daneOUT += Tab_Pom_Miast[i].getMin + "min ";
+                    daneOUT += Tab_Pom_Miast[i].getSec + "s \n";
+                }
             }
+            catch { MessageBox.Show("Blad DANEOUT, Za malo punktow adresowych albo nie wywolano funkcji googleAPIRead "); }
             return daneOUT;
         }
         public void showTrasa(WebBrowser WB)  // wyswietla transe w WebBrowserze obecnie pomiedzy pierwszym a ostatnim miastem
@@ -103,6 +165,30 @@ namespace SPMT
             }
             else { MessageBox.Show("bledna liczba miast"); }
         }
+
+        public void calculate_ST()
+        {
+            double sumS = 0;
+            TimeSpan sumTime = new TimeSpan(0,0,0,0);
+            double sumT = 0;
+            //string g = "";
+            for (int i = 1; i < lista_miast.Count; i++)
+            {
+                sumS+= getS(lista_miast[i - 1].getTown, lista_miast[i].getTown);
+                sumTime += getTimeSpan(lista_miast[i - 1].getTown, lista_miast[i].getTown);
+                sumT += getT(lista_miast[i - 1].getTown, lista_miast[i].getTown);
+                //g+= getST(lista_miast[i - 1].getTown, lista_miast[i].getTown);
+            }
+            //MessageBox.Show("dane out:\n" + g);
+            this.cala_droga_przejazdu = sumS;
+            this.caly_czas_przejazdu = sumT;
+            this.caly_TiemSpan_przejazdu = sumTime;
+        }
+        public double caly_czas() {return this.caly_czas_przejazdu;}
+        public double cala_droga(){return this.cala_droga_przejazdu;}
+        //public string cala_TimeSpan() { return caly_TiemSpan_przejazdu.Days.ToString() + "dni "+caly_TiemSpan_przejazdu.Hours.ToString() + "h " + caly_TiemSpan_przejazdu.Minutes.ToString() + "min " + caly_TiemSpan_przejazdu.Seconds.ToString() + "sec "; }
+        public string cala_TimeSpan() { return caly_TiemSpan_przejazdu.Hours.ToString() + "h " + caly_TiemSpan_przejazdu.Minutes.ToString() + "min " + caly_TiemSpan_przejazdu.Seconds.ToString() + "sec "; }
+
 
         //Funkcje dla Eweliny
         public double get_GEOX(int index_w_liscie)

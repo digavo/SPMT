@@ -115,9 +115,11 @@ namespace SPMT
             //MessageBox.Show(mydt.DANE_IN());
             //MessageBox.Show(mydt.DANE_OUT());
 
+            mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
             richTextBox2.Text += "Baza: " + AdresBazy.ToString() + "\n";
             mydt.ADD_LIST(AdresBazy.ToString());
-
+            mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy
+            richTextBox3.Text = "calkowita droga= " +mydt.cala_droga().ToString()+ "km \ncalkowity czas= " + mydt.cala_TimeSpan() ;
             mydt.showTrasa(webBrowserMAP);
         }
 

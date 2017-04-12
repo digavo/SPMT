@@ -63,11 +63,24 @@ namespace SPMT
                 this.dystans = GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_DISTANCE) / 1000;
                 double czasowka = Set_TimeSpan(GetTimeORDistance(m1, m2, GET_KM_or_TIME.GET_TIME));
                 if (this.dystans != 0 && czasowka != 0) { status = true; }
+                else if (m1==m2) { status = true; }
             }
         }                   // konstruktor polaczenie miedzy miastami 
-        public int getTime { get { return this.czas.Hours * 60 + czas.Minutes; } } //zwraca całkowity czas w minutach 
+
+        public double getDetailTime //zwraca szczaegolowy czas w minutach po przecinku w sekundach  [60*h+min.sek]
+        {
+            get {
+                double t1 = ( (double) (this.czas.Hours * 60 + this.czas.Minutes));
+                double t2 = ( (double) (this.czas.Seconds)) / 100;
+                return t1+t2;
+            }
+        } //zwraca całkowity czas w minutach 
+          //public int getTime { get { return this.czas.Hours * 60 + czas.Minutes; } } //zwraca całkowity czas w minutach 
+        public TimeSpan getTimeSpan  { get{return czas;}} 
+
         public int getHour { get { return this.czas.Hours; } }                     //zwraca tylko godziny bez minut
         public int getMin { get { return this.czas.Minutes; } }                  //zwraca tylko minuty bez godzin
+        public int getSec { get { return this.czas.Seconds; } }                  //zwraca tylko sekundy 
         public string getMiasto1 { get { return this.miasto1.getTown; } }              // zwraca pierwsze z miast
         public string getMiasto2 { get { return this.miasto2.getTown; } }                 // zwraca drugie z miast
         public double getDystans { get { return this.dystans; } }                    //zwraca droge pomiedzy nimi
