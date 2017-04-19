@@ -17,9 +17,9 @@ namespace SPMT
         private double caly_czas_przejazdu;
         private TimeSpan caly_TiemSpan_przejazdu;
 
-        private double getS(string miasto1,string miasto2)
+        public double getS(string miasto1, string miasto2)
         {
-           double droga = 0;
+            double droga = 0;
             try
             {
                 for (int i = 0; i < Tab_Pom_Miast.Length; i++)
@@ -169,12 +169,12 @@ namespace SPMT
         public void calculate_ST()
         {
             double sumS = 0;
-            TimeSpan sumTime = new TimeSpan(0,0,0,0);
+            TimeSpan sumTime = new TimeSpan(0, 0, 0, 0);
             double sumT = 0;
             //string g = "";
             for (int i = 1; i < lista_miast.Count; i++)
             {
-                sumS+= getS(lista_miast[i - 1].getTown, lista_miast[i].getTown);
+                sumS += getS(lista_miast[i - 1].getTown, lista_miast[i].getTown);
                 sumTime += getTimeSpan(lista_miast[i - 1].getTown, lista_miast[i].getTown);
                 sumT += getT(lista_miast[i - 1].getTown, lista_miast[i].getTown);
                 //g+= getST(lista_miast[i - 1].getTown, lista_miast[i].getTown);
@@ -184,8 +184,8 @@ namespace SPMT
             this.caly_czas_przejazdu = sumT;
             this.caly_TiemSpan_przejazdu = sumTime;
         }
-        public double caly_czas() {return this.caly_czas_przejazdu;}
-        public double cala_droga(){return this.cala_droga_przejazdu;}
+        public double caly_czas() { return this.caly_czas_przejazdu; }
+        public double cala_droga() { return this.cala_droga_przejazdu; }
         //public string cala_TimeSpan() { return caly_TiemSpan_przejazdu.Days.ToString() + "dni "+caly_TiemSpan_przejazdu.Hours.ToString() + "h " + caly_TiemSpan_przejazdu.Minutes.ToString() + "min " + caly_TiemSpan_przejazdu.Seconds.ToString() + "sec "; }
         public string cala_TimeSpan() { return caly_TiemSpan_przejazdu.Hours.ToString() + "h " + caly_TiemSpan_przejazdu.Minutes.ToString() + "min " + caly_TiemSpan_przejazdu.Seconds.ToString() + "sec "; }
 
@@ -206,6 +206,10 @@ namespace SPMT
                 return lista_miast[index_w_liscie].getGeoY;
             }
             return 0;
+        }
+        public string get_TowN(int i)
+        {
+            return lista_miast[i].getTown;
         }
         public int SIZE_LIST()
         {

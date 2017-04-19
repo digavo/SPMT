@@ -255,12 +255,23 @@ namespace SPMT
             
             mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
             mydt.ADD_LIST(AdresBazy.ToString());
-            double[,] tab = new double[4, 4] {  {   0, 270, 100, 200},      //zamiast tego musi byc tabela z rzeczywistymi odleglosciami
-                                            { 270,   0, 190,  80},
-                                            { 100, 190,   0, 110},
-                                            { 200,  80, 110,   0} };
-            Wyzazanie W = new Wyzazanie(tab, 4);
+
+
+            double[,] tab = new double[mydt.SIZE_LIST(), mydt.SIZE_LIST()];//
+            for (int i = 0; i < mydt.SIZE_LIST(); i++)
+            {
+                for (int j = 0; j < mydt.SIZE_LIST(); j++)
+                {
+                    if (i == j) { tab[i, j] = 0; }
+                    else { tab[i, j] = mydt.getS(mydt.get_TowN(i), mydt.get_TowN(j)); }
+
+                }
+            }
+            Wyzazanie W = new Wyzazanie(tab, mydt.SIZE_LIST());
             List<int> Kolejnosc = W.Sym_Wyz();
+            mydt.get_list_form_salesman(Kolejnosc);
+
+
             mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy
             labelCzas.Text = mydt.cala_TimeSpan();
             labelDługość.Text = mydt.cala_droga().ToString() + " km";
