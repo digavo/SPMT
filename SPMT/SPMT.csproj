@@ -81,6 +81,7 @@
     <Compile Include="GoogleApi\GA_DaneTrasy.cs" />
     <Compile Include="GoogleApi\GA_PomiedzyAdresami.cs" />
     <Compile Include="GoogleApi\GA_View.cs" />
+    <Compile Include="GoogleApi\Wyzazanie.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
