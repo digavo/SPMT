@@ -22,21 +22,25 @@ namespace SPMT
         private BindingList<Zamówienie> ListaTrasy = new BindingList<Zamówienie>();
         private TransportDbContext ctx = new TransportDbContext();
         private Adres AdresBazy;
+        private GA_DaneTrasy mydt;
         public MainForm()
         {
             InitializeComponent();
+            webBrowserMAP.Dock = DockStyle.Fill;
             panelEmpty.Dock = DockStyle.Fill;
             tabControlZam.Dock = DockStyle.Fill;
             groupTrasa.Dock = DockStyle.Fill;
             groupMapa.Dock = DockStyle.Fill;
             panelEmpty.BringToFront();
+            labelCzas.Text = "";
+            labelDługość.Text = "";
 
             foreach (var k in ctx.Klienci)
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
                 ListaZamówień.Add(z);
             AdresBazy = ctx.Adresy.First();
-            labelBaza.Text += AdresBazy.ToString();
+            buttonBaza.Text += AdresBazy.ToString();
             listBox1.DataSource = ListaTrasy;
             listBox2.DataSource = ListaZamówień;
             dataGridView2.DataSource = ListaKlientów;
@@ -49,7 +53,6 @@ namespace SPMT
         }
 
         //GOOGLE MAPS
-
         private void SetRegistryDword(string key_name, string value_name, int value)
         {
             // Open the key.
@@ -94,9 +97,15 @@ namespace SPMT
         private void buttonMapa_Click(object sender, EventArgs e)
         {
             label2.Text = "Mapa";
-            groupMapa.BringToFront();
-            richTextBox2.Text = "";
 
+            // to poniżej wykonuje się w zakładce Traza -> wyznacz trasę, następnie wyznaczona trasa jest widoczna na mapie
+
+            /*groupMapa.BringToFront();
+            if (!ListaTrasy.Any())
+            {
+                MessageBox.Show("Lista zamówień na trasie jest pusta");
+                return;
+            }
             GA_DaneTrasy mydt = new GA_DaneTrasy();
             mydt.ADD_LIST(AdresBazy.ToString());
             richTextBox2.Text += "Baza: "+AdresBazy.ToString() + "\n";
@@ -105,22 +114,13 @@ namespace SPMT
                 mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
                 richTextBox2.Text += z.Odbiorca.Adres.ToString() + "\n";
             }
-
-            //mydt.ADD_LIST("Wrocław");
-            //mydt.ADD_LIST("Opole");
-            //mydt.ADD_LIST("Kraków");
-            //mydt.ADD_LIST("Łódź");
-            //mydt.ADD_LIST("Kielce");
-            //mydt.Dane_googleAPI_read();
-            //MessageBox.Show(mydt.DANE_IN());
-            //MessageBox.Show(mydt.DANE_OUT());
-
             mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
             richTextBox2.Text += "Baza: " + AdresBazy.ToString() + "\n";
             mydt.ADD_LIST(AdresBazy.ToString());
-            mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy
-            richTextBox3.Text = "calkowita droga= " +mydt.cala_droga().ToString()+ "km \ncalkowity czas= " + mydt.cala_TimeSpan() ;
-            mydt.showTrasa(webBrowserMAP);
+            mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy*/
+
+            if (mydt !=null)
+                mydt.showTrasa(webBrowserMAP);
         }
 
         // ZAMÓWIENIA I KLIENCI
@@ -224,6 +224,7 @@ namespace SPMT
             else if (dialogResult == DialogResult.Cancel)
                 return;
         }
+        
         // TRASA 
         private void buttonTrasaUsunZam_Click(object sender, EventArgs e)
         {
@@ -239,13 +240,32 @@ namespace SPMT
         }
         private void buttonTrasaWyznacz_Click(object sender, EventArgs e)
         {
+            if (!ListaTrasy.Any())
+            {
+                MessageBox.Show("Lista zamówień na trasie jest pusta");
+                return;
+            }
 
+            mydt = new GA_DaneTrasy();
+            mydt.ADD_LIST(AdresBazy.ToString());
+            foreach (var z in ListaTrasy)
+            {
+                mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
+            }
+            
+            mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
+            mydt.ADD_LIST(AdresBazy.ToString());
+            mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy
+            labelCzas.Text = mydt.cala_TimeSpan();
+            labelDługość.Text = mydt.cala_droga().ToString() + " km";
         }
         private void buttonTrasaUsun_Click(object sender, EventArgs e)
         {
 
         }
 
-
+        private void buttonBaza_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

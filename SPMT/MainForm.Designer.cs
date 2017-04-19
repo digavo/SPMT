@@ -36,10 +36,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.groupTrasa = new System.Windows.Forms.GroupBox();
             this.groupMapa = new System.Windows.Forms.GroupBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControlZam = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
@@ -53,33 +52,37 @@
             this.button8 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panelEmpty = new System.Windows.Forms.Panel();
-            this.groupTrasa = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszTrasęToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelBaza = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.buttonBaza = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelCzas = new System.Windows.Forms.Label();
+            this.labelDługość = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelSide.SuspendLayout();
             this.panelMain.SuspendLayout();
+            this.groupTrasa.SuspendLayout();
             this.groupMapa.SuspendLayout();
             this.tabControlZam.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupTrasa.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -181,43 +184,41 @@
             this.panelMain.Size = new System.Drawing.Size(784, 399);
             this.panelMain.TabIndex = 3;
             // 
+            // groupTrasa
+            // 
+            this.groupTrasa.Controls.Add(this.panel1);
+            this.groupTrasa.Controls.Add(this.buttonBaza);
+            this.groupTrasa.Controls.Add(this.button12);
+            this.groupTrasa.Controls.Add(this.button11);
+            this.groupTrasa.Controls.Add(this.button10);
+            this.groupTrasa.Controls.Add(this.button9);
+            this.groupTrasa.Controls.Add(this.listBox2);
+            this.groupTrasa.Controls.Add(this.listBox1);
+            this.groupTrasa.Controls.Add(this.label4);
+            this.groupTrasa.Controls.Add(this.label3);
+            this.groupTrasa.Location = new System.Drawing.Point(114, 3);
+            this.groupTrasa.Name = "groupTrasa";
+            this.groupTrasa.Size = new System.Drawing.Size(453, 387);
+            this.groupTrasa.TabIndex = 0;
+            this.groupTrasa.TabStop = false;
+            // 
             // groupMapa
             // 
-            this.groupMapa.Controls.Add(this.richTextBox3);
             this.groupMapa.Controls.Add(this.webBrowserMAP);
-            this.groupMapa.Controls.Add(this.richTextBox2);
-            this.groupMapa.Location = new System.Drawing.Point(388, 3);
+            this.groupMapa.Location = new System.Drawing.Point(412, 3);
             this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(377, 387);
+            this.groupMapa.Size = new System.Drawing.Size(369, 387);
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
             // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(6, 163);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(227, 112);
-            this.richTextBox3.TabIndex = 4;
-            this.richTextBox3.Text = "";
-            // 
             // webBrowserMAP
             // 
-            this.webBrowserMAP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserMAP.Location = new System.Drawing.Point(239, 11);
+            this.webBrowserMAP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserMAP.Location = new System.Drawing.Point(3, 17);
             this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(132, 370);
+            this.webBrowserMAP.Size = new System.Drawing.Size(363, 367);
             this.webBrowserMAP.TabIndex = 3;
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Location = new System.Drawing.Point(6, 24);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(227, 112);
-            this.richTextBox2.TabIndex = 2;
-            this.richTextBox2.Text = "";
             // 
             // tabControlZam
             // 
@@ -383,116 +384,6 @@
             this.panelEmpty.Size = new System.Drawing.Size(134, 120);
             this.panelEmpty.TabIndex = 17;
             // 
-            // groupTrasa
-            // 
-            this.groupTrasa.Controls.Add(this.labelBaza);
-            this.groupTrasa.Controls.Add(this.richTextBox1);
-            this.groupTrasa.Controls.Add(this.button12);
-            this.groupTrasa.Controls.Add(this.button11);
-            this.groupTrasa.Controls.Add(this.button10);
-            this.groupTrasa.Controls.Add(this.button9);
-            this.groupTrasa.Controls.Add(this.listBox2);
-            this.groupTrasa.Controls.Add(this.listBox1);
-            this.groupTrasa.Controls.Add(this.label4);
-            this.groupTrasa.Controls.Add(this.label3);
-            this.groupTrasa.Location = new System.Drawing.Point(153, 3);
-            this.groupTrasa.Name = "groupTrasa";
-            this.groupTrasa.Size = new System.Drawing.Size(414, 387);
-            this.groupTrasa.TabIndex = 0;
-            this.groupTrasa.TabStop = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(107, 281);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(172, 100);
-            this.richTextBox1.TabIndex = 30;
-            this.richTextBox1.Text = "Czas przejazdu:\nDługość trasy:\n\n\nkolejność można zmienić na liście na górze";
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(6, 206);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(95, 40);
-            this.button12.TabIndex = 29;
-            this.button12.Text = "Usuń z trasy";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.buttonTrasaUsunZam_Click);
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button11.Location = new System.Drawing.Point(6, 281);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(95, 40);
-            this.button11.TabIndex = 28;
-            this.button11.Text = "Wyznacz trasę";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.buttonTrasaWyznacz_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(282, 206);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(95, 40);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "Dodaj do trasy";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.buttonTrasaDodajZam_Click);
-            // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button9.Location = new System.Drawing.Point(6, 327);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(95, 40);
-            this.button9.TabIndex = 26;
-            this.button9.Text = "Usuń trasę";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.buttonTrasaUsun_Click);
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Items.AddRange(new object[] {
-            "nr zamówienia / Adres"});
-            this.listBox2.Location = new System.Drawing.Point(282, 61);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(270, 139);
-            this.listBox2.TabIndex = 25;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Items.AddRange(new object[] {
-            "nr zamówienia / Adres"});
-            this.listBox1.Location = new System.Drawing.Point(6, 61);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(270, 139);
-            this.listBox1.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(283, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 15);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Lista zamówień wszystkich:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Lista zamówień na trasie:";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -517,7 +408,7 @@
             // zapiszTrasęToolStripMenuItem
             // 
             this.zapiszTrasęToolStripMenuItem.Name = "zapiszTrasęToolStripMenuItem";
-            this.zapiszTrasęToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.zapiszTrasęToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zapiszTrasęToolStripMenuItem.Text = "Zapisz trasę";
             // 
             // ustawieniaToolStripMenuItem
@@ -532,15 +423,152 @@
             this.oProgramieToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.oProgramieToolStripMenuItem.Text = "O programie";
             // 
-            // labelBaza
+            // label3
             // 
-            this.labelBaza.AutoSize = true;
-            this.labelBaza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBaza.Location = new System.Drawing.Point(7, 17);
-            this.labelBaza.Name = "labelBaza";
-            this.labelBaza.Size = new System.Drawing.Size(82, 15);
-            this.labelBaza.TabIndex = 31;
-            this.labelBaza.Text = "Baza firmy: ";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Lista zamówień na trasie:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(283, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Lista zamówień wszystkich:";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Items.AddRange(new object[] {
+            "nr zamówienia / Adres"});
+            this.listBox1.Location = new System.Drawing.Point(6, 66);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(270, 139);
+            this.listBox1.TabIndex = 2;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Items.AddRange(new object[] {
+            "nr zamówienia / Adres"});
+            this.listBox2.Location = new System.Drawing.Point(282, 66);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(270, 139);
+            this.listBox2.TabIndex = 25;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button9.Location = new System.Drawing.Point(6, 332);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(95, 40);
+            this.button9.TabIndex = 26;
+            this.button9.Text = "Usuń trasę";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.buttonTrasaUsun_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(282, 211);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(95, 40);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "Dodaj do trasy";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.buttonTrasaDodajZam_Click);
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button11.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button11.Location = new System.Drawing.Point(6, 281);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(95, 40);
+            this.button11.TabIndex = 28;
+            this.button11.Text = "Wyznacz trasę";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.buttonTrasaWyznacz_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(6, 211);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(95, 40);
+            this.button12.TabIndex = 29;
+            this.button12.Text = "Usuń z trasy";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.buttonTrasaUsunZam_Click);
+            // 
+            // buttonBaza
+            // 
+            this.buttonBaza.AutoSize = true;
+            this.buttonBaza.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonBaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBaza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonBaza.Location = new System.Drawing.Point(10, 13);
+            this.buttonBaza.Name = "buttonBaza";
+            this.buttonBaza.Size = new System.Drawing.Size(104, 27);
+            this.buttonBaza.TabIndex = 32;
+            this.buttonBaza.Text = "Baza firmy: ";
+            this.buttonBaza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonBaza.UseVisualStyleBackColor = true;
+            this.buttonBaza.Click += new System.EventHandler(this.buttonBaza_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.labelDługość);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.labelCzas);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(108, 281);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(205, 91);
+            this.panel1.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Czas przejazdu: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(86, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Długość trasy: ";
+            // 
+            // labelCzas
+            // 
+            this.labelCzas.AutoSize = true;
+            this.labelCzas.Location = new System.Drawing.Point(15, 25);
+            this.labelCzas.Name = "labelCzas";
+            this.labelCzas.Size = new System.Drawing.Size(97, 15);
+            this.labelCzas.TabIndex = 2;
+            this.labelCzas.Text = "Czas przejazdu: ";
+            // 
+            // labelDługość
+            // 
+            this.labelDługość.AutoSize = true;
+            this.labelDługość.Location = new System.Drawing.Point(15, 76);
+            this.labelDługość.Name = "labelDługość";
+            this.labelDługość.Size = new System.Drawing.Size(86, 15);
+            this.labelDługość.TabIndex = 3;
+            this.labelDługość.Text = "Długość trasy: ";
             // 
             // MainForm
             // 
@@ -559,16 +587,18 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelSide.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
+            this.groupTrasa.ResumeLayout(false);
+            this.groupTrasa.PerformLayout();
             this.groupMapa.ResumeLayout(false);
             this.tabControlZam.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupTrasa.ResumeLayout(false);
-            this.groupTrasa.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,6 +631,10 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupMapa;
+        private System.Windows.Forms.Panel panelEmpty;
+        private System.Windows.Forms.WebBrowser webBrowserMAP;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
@@ -609,13 +643,11 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Panel panelEmpty;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.WebBrowser webBrowserMAP;
-        private System.Windows.Forms.RichTextBox richTextBox3;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Label labelBaza;
+        private System.Windows.Forms.Button buttonBaza;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelDługość;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelCzas;
+        private System.Windows.Forms.Label label6;
     }
 }
