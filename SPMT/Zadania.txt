@@ -40,7 +40,6 @@ _______________________________________________________
 TODO:
 - opcje paska menu oprogramować (w ustawieniach zmiana adresu bazy?)
 - sortowanie zamówień
-- wizualizacja trasy
 
 _______________________________________________________
 
@@ -63,8 +62,6 @@ _______________________________________________________
 - trzeba określić bazę kuriera - punkt początkowy i końcowy
 
 TODO: 
-- dodatkowe warunki, terminy dostarczenia (okna czasowe)
-- po 4h przerwa - dodać po wyznaczeniu trasy optymalnej
 
 _______________________________________________________
 

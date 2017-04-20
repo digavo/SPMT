@@ -97,7 +97,7 @@ namespace SPMT
         private void buttonMapa_Click(object sender, EventArgs e)
         {
             label2.Text = "Mapa";
-
+            groupMapa.BringToFront();
             // to poniżej wykonuje się w zakładce Traza -> wyznacz trasę, następnie wyznaczona trasa jest widoczna na mapie
 
             /*groupMapa.BringToFront();
