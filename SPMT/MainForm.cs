@@ -284,5 +284,15 @@ namespace SPMT
         private void buttonBaza_Click(object sender, EventArgs e)
         {
         }
+
+        private void label1_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, label1.DisplayRectangle, Color.DarkOrange, ButtonBorderStyle.Solid);
+        }
+
+        private void label2_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, label2.DisplayRectangle, Color.DarkOrange, ButtonBorderStyle.Solid);
+        }
     }
 }
