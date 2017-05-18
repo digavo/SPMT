@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.263923F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73608F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(930, 460);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1199, 492);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -104,7 +104,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(143, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(784, 33);
+            this.label2.Size = new System.Drawing.Size(1053, 35);
             this.label2.TabIndex = 2;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Paint += new System.Windows.Forms.PaintEventHandler(this.label2_Paint);
@@ -115,18 +115,18 @@
             this.panelSide.Controls.Add(this.button2);
             this.panelSide.Controls.Add(this.button1);
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSide.Location = new System.Drawing.Point(3, 36);
+            this.panelSide.Location = new System.Drawing.Point(3, 38);
             this.panelSide.Name = "panelSide";
-            this.panelSide.Size = new System.Drawing.Size(134, 421);
+            this.panelSide.Size = new System.Drawing.Size(134, 451);
             this.panelSide.TabIndex = 0;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.DarkOrange;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(0, 84);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
@@ -175,7 +175,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 33);
+            this.label1.Size = new System.Drawing.Size(134, 35);
             this.label1.TabIndex = 1;
             this.label1.Text = "Opcje";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -188,26 +188,26 @@
             this.panelMain.Controls.Add(this.tabControlZam);
             this.panelMain.Controls.Add(this.panelEmpty);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(143, 36);
+            this.panelMain.Location = new System.Drawing.Point(143, 38);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(784, 421);
+            this.panelMain.Size = new System.Drawing.Size(1053, 451);
             this.panelMain.TabIndex = 3;
             // 
             // groupTrasa
             // 
             this.groupTrasa.Controls.Add(this.panel1);
+            this.groupTrasa.Controls.Add(this.listBox1);
             this.groupTrasa.Controls.Add(this.buttonBaza);
             this.groupTrasa.Controls.Add(this.button12);
             this.groupTrasa.Controls.Add(this.button11);
             this.groupTrasa.Controls.Add(this.button10);
             this.groupTrasa.Controls.Add(this.button9);
             this.groupTrasa.Controls.Add(this.listBox2);
-            this.groupTrasa.Controls.Add(this.listBox1);
             this.groupTrasa.Controls.Add(this.label4);
             this.groupTrasa.Controls.Add(this.label3);
-            this.groupTrasa.Location = new System.Drawing.Point(278, 3);
+            this.groupTrasa.Location = new System.Drawing.Point(403, 23);
             this.groupTrasa.Name = "groupTrasa";
-            this.groupTrasa.Size = new System.Drawing.Size(289, 387);
+            this.groupTrasa.Size = new System.Drawing.Size(641, 387);
             this.groupTrasa.TabIndex = 0;
             this.groupTrasa.TabStop = false;
             // 
@@ -374,19 +374,19 @@
             // groupMapa
             // 
             this.groupMapa.Controls.Add(this.webBrowserMAP);
-            this.groupMapa.Location = new System.Drawing.Point(412, 3);
+            this.groupMapa.Location = new System.Drawing.Point(482, 3);
             this.groupMapa.Name = "groupMapa";
-            this.groupMapa.Size = new System.Drawing.Size(369, 387);
+            this.groupMapa.Size = new System.Drawing.Size(568, 422);
             this.groupMapa.TabIndex = 16;
             this.groupMapa.TabStop = false;
             // 
             // webBrowserMAP
             // 
-            this.webBrowserMAP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserMAP.Location = new System.Drawing.Point(3, 17);
+            this.webBrowserMAP.Dock = System.Windows.Forms.DockStyle.Right;
+            this.webBrowserMAP.Location = new System.Drawing.Point(202, 17);
             this.webBrowserMAP.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(363, 367);
+            this.webBrowserMAP.Size = new System.Drawing.Size(363, 402);
             this.webBrowserMAP.TabIndex = 3;
             // 
             // tabControlZam
@@ -579,7 +579,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(930, 460);
+            this.ClientSize = new System.Drawing.Size(1199, 492);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.MinimumSize = new System.Drawing.Size(600, 450);

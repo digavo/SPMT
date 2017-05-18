@@ -58,12 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BazaDanych\Adres.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="BazaDanych\Klient.cs" />
     <Compile Include="FormKlient.cs">
       <SubType>Form</SubType>
@@ -82,6 +76,12 @@
     <Compile Include="GoogleApi\GA_PomiedzyAdresami.cs" />
     <Compile Include="GoogleApi\GA_View.cs" />
     <Compile Include="GoogleApi\Wyzazanie.cs" />
+    <Compile Include="KurierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KurierForm.Designer.cs">
+      <DependentUpon>KurierForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,14 +93,14 @@
     <Compile Include="BazaDanych\TransportDbContext.cs" />
     <Compile Include="BazaDanych\TransportDbInitializer.cs" />
     <Compile Include="BazaDanych\Zamówienie.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormKlient.resx">
       <DependentUpon>FormKlient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormZamówienie.resx">
       <DependentUpon>FormZamówienie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KurierForm.resx">
+      <DependentUpon>KurierForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -113,6 +113,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +136,7 @@
     <Content Include="mapa.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Icon1.ico" />
     <Content Include="Zadania.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

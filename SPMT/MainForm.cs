@@ -270,9 +270,9 @@ namespace SPMT
             Wyzazanie W = new Wyzazanie(tab, mydt.SIZE_LIST());
             List<int> Kolejnosc = W.Sym_Wyz();
             mydt.get_list_form_salesman(Kolejnosc);
+            //listBox1.DataSource=Kolejnosc;
 
-
-            mydt.calculate_ST(); // to musi byc wywolane  po dodaniu adresu bazy na koncu trasy
+            mydt.calculate_ST(); // to musi byc wywolane po dodaniu adresu bazy na koncu trasy
             labelCzas.Text = mydt.cala_TimeSpan();
             labelDługość.Text = mydt.cala_droga().ToString() + " km";
         }
