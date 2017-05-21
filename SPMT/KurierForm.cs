@@ -24,11 +24,9 @@ namespace SPMT
             InitializeComponent();
             panelTrasa.Dock = DockStyle.Fill;
             panelBaza.Dock = DockStyle.Fill;
-            //panelK.Dock = DockStyle.Fill;
-            //panelZ.Dock = DockStyle.Fill;
             panelZam.BringToFront();
             btnZam.BackColor = Color.Gainsboro;
-
+            panelBaza.BringToFront();
             labelCzas.Text = "";
             labelDługość.Text = "";
 
@@ -110,11 +108,19 @@ namespace SPMT
             Wyzazanie W = new Wyzazanie(tab, mydt.SIZE_LIST());
             List<int> Kolejnosc = W.Sym_Wyz();
             mydt.get_list_form_salesman(Kolejnosc);
-            //listBox1.DataSource=Kolejnosc;
+            List<Zamówienie> KolejnoscZam = new List<Zamówienie>();
+            foreach (int k in Kolejnosc)
+            {
+                if (k == 0 || k == (Kolejnosc.Count()-1)) continue;
+                KolejnoscZam.Add(ListaTrasy[k-1]);
+            }
+            listBox2.DataSource=KolejnoscZam;
 
             mydt.calculate_ST(); // to musi byc wywolane po dodaniu adresu bazy na koncu trasy
             labelCzas.Text = mydt.cala_TimeSpan();
             labelDługość.Text = mydt.cala_droga().ToString() + " km";
+
+            mydt.showTrasa(webBrowserMAP);
         }
 
         private void btnBaza_Click(object sender, EventArgs e)
@@ -254,10 +260,17 @@ namespace SPMT
                 ListaTrasy.Add(z);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLZ1_Click(object sender, EventArgs e)
+        {
+            foreach (var z in ctx.Zamówienia)
+                if (!ListaTrasy.Contains(z))
+                    ListaTrasy.Add(z);
+        }
+        private void btnLZ2_Click(object sender, EventArgs e)
         {
             if (ListaTrasy.Count() == 0) return;
             ListaTrasy.Remove((Zamówienie)listBox1.SelectedItem);
         }
+
     }
 }

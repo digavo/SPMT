@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KurierForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
             this.btnBaza = new System.Windows.Forms.Button();
             this.btnTrasa = new System.Windows.Forms.Button();
@@ -39,21 +39,18 @@
             this.labelCzas = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelBaza = new System.Windows.Forms.Label();
             this.btnZ = new System.Windows.Forms.Button();
             this.btnK = new System.Windows.Forms.Button();
             this.panelBaza = new System.Windows.Forms.TableLayoutPanel();
             this.panel0 = new System.Windows.Forms.Panel();
-            this.panelZ = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnZ4 = new System.Windows.Forms.Button();
-            this.btnZ3 = new System.Windows.Forms.Button();
-            this.btnZ2 = new System.Windows.Forms.Button();
-            this.btnZ1 = new System.Windows.Forms.Button();
             this.panelZam = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnLZ2 = new System.Windows.Forms.Button();
+            this.btnLZ1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panelK = new System.Windows.Forms.Panel();
@@ -61,21 +58,23 @@
             this.btnK3 = new System.Windows.Forms.Button();
             this.btnK2 = new System.Windows.Forms.Button();
             this.btnK1 = new System.Windows.Forms.Button();
+            this.panelZ = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnZ4 = new System.Windows.Forms.Button();
+            this.btnZ3 = new System.Windows.Forms.Button();
+            this.btnZ2 = new System.Windows.Forms.Button();
+            this.btnZ1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnZam = new System.Windows.Forms.Button();
             this.panelTrasa = new System.Windows.Forms.Panel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panelBaza.SuspendLayout();
             this.panel0.SuspendLayout();
-            this.panelZ.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelZam.SuspendLayout();
             this.panelK.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panelZ.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelTrasa.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +87,7 @@
             this.webBrowserMAP.Location = new System.Drawing.Point(312, 3);
             this.webBrowserMAP.MinimumSize = new System.Drawing.Size(23, 23);
             this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(850, 239);
+            this.webBrowserMAP.Size = new System.Drawing.Size(850, 261);
             this.webBrowserMAP.TabIndex = 3;
             // 
             // btnBaza
@@ -174,8 +173,43 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(3, 96);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 146);
+            this.panel4.Size = new System.Drawing.Size(303, 168);
             this.panel4.TabIndex = 36;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label4.Location = new System.Drawing.Point(7, 82);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Dane trasy:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label2.Location = new System.Drawing.Point(7, 174);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Lista adresów:";
+            // 
+            // listBox2
+            // 
+            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(4, 203);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(296, 32);
+            this.listBox2.TabIndex = 6;
             // 
             // label1
             // 
@@ -192,7 +226,7 @@
             // 
             this.labelBaza.AutoSize = true;
             this.labelBaza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBaza.ForeColor = System.Drawing.Color.DarkOrange;
+            this.labelBaza.ForeColor = System.Drawing.Color.Black;
             this.labelBaza.Location = new System.Drawing.Point(17, 40);
             this.labelBaza.Name = "labelBaza";
             this.labelBaza.Size = new System.Drawing.Size(0, 15);
@@ -256,6 +290,152 @@
             this.panel0.Size = new System.Drawing.Size(1165, 436);
             this.panel0.TabIndex = 29;
             // 
+            // panelZam
+            // 
+            this.panelZam.Controls.Add(this.btnLZ2);
+            this.panelZam.Controls.Add(this.btnLZ1);
+            this.panelZam.Controls.Add(this.listBox1);
+            this.panelZam.Controls.Add(this.label3);
+            this.panelZam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelZam.Location = new System.Drawing.Point(0, 0);
+            this.panelZam.Name = "panelZam";
+            this.panelZam.Size = new System.Drawing.Size(1165, 436);
+            this.panelZam.TabIndex = 32;
+            // 
+            // btnLZ2
+            // 
+            this.btnLZ2.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnLZ2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLZ2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnLZ2.ForeColor = System.Drawing.Color.White;
+            this.btnLZ2.Location = new System.Drawing.Point(0, 40);
+            this.btnLZ2.Name = "btnLZ2";
+            this.btnLZ2.Size = new System.Drawing.Size(130, 40);
+            this.btnLZ2.TabIndex = 36;
+            this.btnLZ2.Text = "Usuń";
+            this.btnLZ2.UseVisualStyleBackColor = true;
+            this.btnLZ2.Click += new System.EventHandler(this.btnLZ2_Click);
+            // 
+            // btnLZ1
+            // 
+            this.btnLZ1.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnLZ1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLZ1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnLZ1.ForeColor = System.Drawing.Color.White;
+            this.btnLZ1.Location = new System.Drawing.Point(0, 0);
+            this.btnLZ1.Name = "btnLZ1";
+            this.btnLZ1.Size = new System.Drawing.Size(130, 40);
+            this.btnLZ1.TabIndex = 35;
+            this.btnLZ1.Text = "Dodaj wszystkie";
+            this.btnLZ1.UseVisualStyleBackColor = true;
+            this.btnLZ1.Click += new System.EventHandler(this.btnLZ1_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Items.AddRange(new object[] {
+            "nr zamówienia / Adres"});
+            this.listBox1.Location = new System.Drawing.Point(143, 49);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(482, 377);
+            this.listBox1.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(144, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 15);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Lista zamówień na trasie:";
+            // 
+            // panelK
+            // 
+            this.panelK.Controls.Add(this.dataGridView2);
+            this.panelK.Controls.Add(this.btnK3);
+            this.panelK.Controls.Add(this.btnK2);
+            this.panelK.Controls.Add(this.btnK1);
+            this.panelK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelK.Location = new System.Drawing.Point(0, 0);
+            this.panelK.Name = "panelK";
+            this.panelK.Size = new System.Drawing.Size(1165, 436);
+            this.panelK.TabIndex = 30;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridView2.Location = new System.Drawing.Point(143, 0);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.ShowCellToolTips = false;
+            this.dataGridView2.ShowEditingIcon = false;
+            this.dataGridView2.Size = new System.Drawing.Size(1017, 436);
+            this.dataGridView2.TabIndex = 30;
+            // 
+            // btnK3
+            // 
+            this.btnK3.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnK3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnK3.ForeColor = System.Drawing.Color.White;
+            this.btnK3.Location = new System.Drawing.Point(0, 80);
+            this.btnK3.Name = "btnK3";
+            this.btnK3.Size = new System.Drawing.Size(130, 40);
+            this.btnK3.TabIndex = 25;
+            this.btnK3.Text = "Usuń";
+            this.btnK3.UseVisualStyleBackColor = true;
+            this.btnK3.Click += new System.EventHandler(this.btnK3_Click);
+            // 
+            // btnK2
+            // 
+            this.btnK2.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnK2.ForeColor = System.Drawing.Color.White;
+            this.btnK2.Location = new System.Drawing.Point(0, 40);
+            this.btnK2.Name = "btnK2";
+            this.btnK2.Size = new System.Drawing.Size(130, 40);
+            this.btnK2.TabIndex = 27;
+            this.btnK2.Text = "Edytuj";
+            this.btnK2.UseVisualStyleBackColor = true;
+            this.btnK2.Click += new System.EventHandler(this.btnK2_Click);
+            // 
+            // btnK1
+            // 
+            this.btnK1.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnK1.ForeColor = System.Drawing.Color.White;
+            this.btnK1.Location = new System.Drawing.Point(0, 0);
+            this.btnK1.Name = "btnK1";
+            this.btnK1.Size = new System.Drawing.Size(130, 40);
+            this.btnK1.TabIndex = 24;
+            this.btnK1.Text = "Dodaj";
+            this.btnK1.UseVisualStyleBackColor = true;
+            this.btnK1.Click += new System.EventHandler(this.btnK1_Click);
+            // 
             // panelZ
             // 
             this.panelZ.Controls.Add(this.dataGridView1);
@@ -281,22 +461,22 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.Location = new System.Drawing.Point(133, 0);
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridView1.Location = new System.Drawing.Point(143, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1032, 436);
+            this.dataGridView1.Size = new System.Drawing.Size(1022, 436);
             this.dataGridView1.TabIndex = 30;
             // 
             // btnZ4
@@ -355,151 +535,6 @@
             this.btnZ1.UseVisualStyleBackColor = true;
             this.btnZ1.Click += new System.EventHandler(this.btnZ1_Click);
             // 
-            // panelZam
-            // 
-            this.panelZam.Controls.Add(this.button1);
-            this.panelZam.Controls.Add(this.button2);
-            this.panelZam.Controls.Add(this.button7);
-            this.panelZam.Controls.Add(this.listBox1);
-            this.panelZam.Controls.Add(this.label3);
-            this.panelZam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelZam.Location = new System.Drawing.Point(0, 0);
-            this.panelZam.Name = "panelZam";
-            this.panelZam.Size = new System.Drawing.Size(1165, 436);
-            this.panelZam.TabIndex = 32;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.DarkOrange;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 40);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Dodaj ";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.DarkOrange;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(0, 0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(130, 40);
-            this.button7.TabIndex = 35;
-            this.button7.Text = "Dodaj wszystkie";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Items.AddRange(new object[] {
-            "nr zamówienia / Adres"});
-            this.listBox1.Location = new System.Drawing.Point(143, 49);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(482, 377);
-            this.listBox1.TabIndex = 34;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(144, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 15);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "Lista zamówień na trasie:";
-            // 
-            // panelK
-            // 
-            this.panelK.Controls.Add(this.dataGridView2);
-            this.panelK.Controls.Add(this.btnK3);
-            this.panelK.Controls.Add(this.btnK2);
-            this.panelK.Controls.Add(this.btnK1);
-            this.panelK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelK.Location = new System.Drawing.Point(0, 0);
-            this.panelK.Name = "panelK";
-            this.panelK.Size = new System.Drawing.Size(1165, 436);
-            this.panelK.TabIndex = 30;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.Location = new System.Drawing.Point(133, 0);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.ShowCellToolTips = false;
-            this.dataGridView2.ShowEditingIcon = false;
-            this.dataGridView2.Size = new System.Drawing.Size(1027, 436);
-            this.dataGridView2.TabIndex = 30;
-            // 
-            // btnK3
-            // 
-            this.btnK3.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnK3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnK3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnK3.ForeColor = System.Drawing.Color.White;
-            this.btnK3.Location = new System.Drawing.Point(0, 80);
-            this.btnK3.Name = "btnK3";
-            this.btnK3.Size = new System.Drawing.Size(130, 40);
-            this.btnK3.TabIndex = 25;
-            this.btnK3.Text = "Usuń";
-            this.btnK3.UseVisualStyleBackColor = true;
-            this.btnK3.Click += new System.EventHandler(this.btnK3_Click);
-            // 
-            // btnK2
-            // 
-            this.btnK2.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnK2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnK2.ForeColor = System.Drawing.Color.White;
-            this.btnK2.Location = new System.Drawing.Point(0, 40);
-            this.btnK2.Name = "btnK2";
-            this.btnK2.Size = new System.Drawing.Size(130, 40);
-            this.btnK2.TabIndex = 27;
-            this.btnK2.Text = "Edytuj";
-            this.btnK2.UseVisualStyleBackColor = true;
-            this.btnK2.Click += new System.EventHandler(this.btnK2_Click);
-            // 
-            // btnK1
-            // 
-            this.btnK1.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnK1.ForeColor = System.Drawing.Color.White;
-            this.btnK1.Location = new System.Drawing.Point(0, 0);
-            this.btnK1.Name = "btnK1";
-            this.btnK1.Size = new System.Drawing.Size(130, 40);
-            this.btnK1.TabIndex = 24;
-            this.btnK1.Text = "Dodaj";
-            this.btnK1.UseVisualStyleBackColor = true;
-            this.btnK1.Click += new System.EventHandler(this.btnK1_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnZam);
@@ -533,59 +568,10 @@
             this.panelTrasa.Controls.Add(this.webBrowserMAP);
             this.panelTrasa.Controls.Add(this.btnBaza);
             this.panelTrasa.Controls.Add(this.panel4);
-            this.panelTrasa.Location = new System.Drawing.Point(2, 567);
+            this.panelTrasa.Location = new System.Drawing.Point(2, 545);
             this.panelTrasa.Name = "panelTrasa";
-            this.panelTrasa.Size = new System.Drawing.Size(1162, 245);
+            this.panelTrasa.Size = new System.Drawing.Size(1162, 267);
             this.panelTrasa.TabIndex = 19;
-            // 
-            // listBox2
-            // 
-            this.listBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(4, 203);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(296, 0);
-            this.listBox2.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label2.Location = new System.Drawing.Point(7, 174);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Lista adresów:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label4.Location = new System.Drawing.Point(7, 82);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Dane trasy:";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 40);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // KurierForm
             // 
@@ -603,12 +589,12 @@
             this.panel4.PerformLayout();
             this.panelBaza.ResumeLayout(false);
             this.panel0.ResumeLayout(false);
-            this.panelZ.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelZam.ResumeLayout(false);
             this.panelZam.PerformLayout();
             this.panelK.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panelZ.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelTrasa.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -645,13 +631,12 @@
         private System.Windows.Forms.Button btnK1;
         private System.Windows.Forms.Button btnZam;
         private System.Windows.Forms.Panel panelZam;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnLZ1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLZ2;
     }
 }
