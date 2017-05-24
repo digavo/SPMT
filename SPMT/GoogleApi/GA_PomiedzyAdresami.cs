@@ -23,7 +23,7 @@ namespace SPMT
         private double GetTimeORDistance(string origin, string destination, GET_KM_or_TIME SorT) // pobiera czas lub droge z google map api 
         {
             double ST = 0; // to zwracamy jesli sie nie uda
-            string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false";
+            string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false?key=AIzaSyC7Jv088sHc_qsjUtrPk5NpG4fqEYCK_ZQ";
             string toShow = "";
             try
             {
