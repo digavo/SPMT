@@ -220,13 +220,12 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(67, 6);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 15);
+            this.label7.Size = new System.Drawing.Size(36, 15);
             this.label7.TabIndex = 13;
-            this.label7.Text = "kg";
+            this.label7.Text = "gram";
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
             this.numericUpDown2.Location = new System.Drawing.Point(3, 4);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000,
@@ -284,9 +283,9 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DarkOrange;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(219, 209);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(70, 40);
@@ -298,8 +297,8 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DarkOrange;
-            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(143, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 40);

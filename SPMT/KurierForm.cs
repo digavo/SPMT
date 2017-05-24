@@ -159,8 +159,9 @@ namespace SPMT
             var dialogResult = formularz.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
+                //MessageBox.Show(formularz.klientId + " ");
                 ListaKlientów.Add(ctx.Klienci.Where(x => x.Id == formularz.klientId).First());
-                MessageBox.Show(formularz.klientId + " ");
+                
             }
             else if (dialogResult == DialogResult.Cancel)
                 return;

@@ -60,8 +60,8 @@ namespace SPMT
                 {
                     Klient klient = new Klient() { Nazwa = textBox1.Text, Adres = adres, NumerTelefonu = maskedTextBox2.Text, Rodzaj = checkBox1.Checked ? "Firma" : "Osoba" };
                     ctx.Klienci.Add(klient);
-                    klientId = klient.Id;
                     ctx.SaveChanges();
+                    klientId = klient.Id;
                 }
             }
             

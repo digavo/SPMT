@@ -24,7 +24,8 @@ namespace SPMT
             comboBox2.BindingContext = new BindingContext();
             comboBox2.DataSource = klienci;
             comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0; 
+            comboBox2.SelectedIndex = 0;
+            dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = dateTimePicker1.Value.AddHours((int)numericUpDown1.Value);
             if (edycja)
             {
@@ -55,7 +56,7 @@ namespace SPMT
             }
             if (dateTimePicker1.Value > DateTime.Now)
             {
-                MessageBox.Show("Termin nadania nie może być późniejszy niż aktualna data");
+                MessageBox.Show("Termin nadania nie może być późniejszy niż aktualna data "+DateTime.Now);
                 return;
             }
             if (comboBox1.SelectedIndex==comboBox2.SelectedIndex)
@@ -92,8 +93,8 @@ namespace SPMT
                         WagaPaczki = (int)numericUpDown2.Value
                     };
                     ctx.Zamówienia.Add(zamowienie);
-                    zamId = zamowienie.Id;
                     ctx.SaveChanges();
+                    zamId = zamowienie.Id;
                 }
 
             }
