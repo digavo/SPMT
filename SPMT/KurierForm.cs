@@ -18,6 +18,7 @@ namespace SPMT
         private BindingList<Zamówienie> ListaTrasy = new BindingList<Zamówienie>();
         private TransportDbContext ctx = new TransportDbContext();
         private Adres AdresBazy;
+        private bool wyliczTrase;
         private GA_DaneTrasy mydt;
         public KurierForm()
         {
@@ -29,7 +30,7 @@ namespace SPMT
             panelBaza.BringToFront();
             labelCzas.Text = "";
             labelDługość.Text = "";
-
+            loading.Visible = false;
             foreach (var k in ctx.Klienci)
                 ListaKlientów.Add(k);
             foreach (var z in ctx.Zamówienia)
@@ -45,6 +46,7 @@ namespace SPMT
             dataGridView1.Columns["DataDostarczenia"].Visible = false;
             dataGridView1.Columns["NadawcaId"].Visible = false;
             dataGridView1.Columns["OdbiorcaId"].Visible = false;
+            wyliczTrase = false;
         }
 
         //GOOGLE MAPS
@@ -86,43 +88,15 @@ namespace SPMT
                 MessageBox.Show("Lista zamówień na trasie jest pusta");
                 return;
             }
-
-            mydt = new GA_DaneTrasy();
-            mydt.ADD_LIST(AdresBazy.ToString());
-            foreach (var z in ListaTrasy)
+            if (wyliczTrase)
             {
-                mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
+                if (!backgroundWorker1.IsBusy)
+                backgroundWorker1.RunWorkerAsync();
+                loading.Visible = true;
+                wyliczTrase = false;
             }
-            mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
-            mydt.ADD_LIST(AdresBazy.ToString());
-            double[,] tab = new double[mydt.SIZE_LIST(), mydt.SIZE_LIST()];//
-            for (int i = 0; i < mydt.SIZE_LIST(); i++)
-            {
-                for (int j = 0; j < mydt.SIZE_LIST(); j++)
-                {
-                    if (i == j) { tab[i, j] = 0; }
-                    else { tab[i, j] = mydt.getS(mydt.get_TowN(i), mydt.get_TowN(j)); }
-
-                }
-            }
-            Wyzazanie W = new Wyzazanie(tab, mydt.SIZE_LIST());
-            List<int> Kolejnosc = W.Sym_Wyz();
-            mydt.get_list_form_salesman(Kolejnosc);
-            List<Zamówienie> KolejnoscZam = new List<Zamówienie>();
-            foreach (int k in Kolejnosc)
-            {
-                if (k == 0 || k == (Kolejnosc.Count()-1)) continue;
-                KolejnoscZam.Add(ListaTrasy[k-1]);
-            }
-            listBox2.DataSource=KolejnoscZam;
-
-            mydt.calculate_ST(); // to musi byc wywolane po dodaniu adresu bazy na koncu trasy
-            labelCzas.Text = mydt.cala_TimeSpan();
-            labelDługość.Text = mydt.cala_droga().ToString() + " km";
-
-            mydt.showTrasa(webBrowserMAP);
         }
-
+        
         private void btnBaza_Click(object sender, EventArgs e)
         {
             panelBaza.BringToFront();
@@ -258,20 +232,92 @@ namespace SPMT
             int curItem = dataGridView1.SelectedRows[0].Index;
             Zamówienie z = ListaZamówień[curItem];
             if (!ListaTrasy.Contains(z))
-                ListaTrasy.Add(z);
+            {
+                if (backgroundWorker1.IsBusy)
+                    MessageBox.Show("Poczekaj na wyznaczenie trasy");
+                else
+                {
+                    ListaTrasy.Add(z);
+                    wyliczTrase = true;
+                }
+            }
         }
 
+        // LISTA ZAMÓWIEŃ
         private void btnLZ1_Click(object sender, EventArgs e)
         {
             foreach (var z in ctx.Zamówienia)
                 if (!ListaTrasy.Contains(z))
-                    ListaTrasy.Add(z);
+                {
+                    if (backgroundWorker1.IsBusy)
+                        MessageBox.Show("Poczekaj na wyznaczenie trasy");
+                    else
+                    {
+                        ListaTrasy.Add(z);
+                        wyliczTrase = true;
+                    }
+                }
         }
         private void btnLZ2_Click(object sender, EventArgs e)
         {
             if (ListaTrasy.Count() == 0) return;
-            ListaTrasy.Remove((Zamówienie)listBox1.SelectedItem);
+            if (backgroundWorker1.IsBusy)
+                MessageBox.Show("Poczekaj na wyznaczenie trasy");
+            else
+            {
+                ListaTrasy.Remove((Zamówienie)listBox1.SelectedItem);
+                wyliczTrase = true;
+            }
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            mydt = new GA_DaneTrasy();
+            mydt.ADD_LIST(AdresBazy.ToString());
+            foreach (var z in ListaTrasy)
+                mydt.ADD_LIST(z.Odbiorca.Adres.ToString());
+            
+            mydt.Dane_googleAPI_read(); // to musi byc wywolane dokladnie po ostatnim adresie, lecz przed dodaniem adresu bazy na koncu trasy
+            mydt.ADD_LIST(AdresBazy.ToString());
+            double[,] tab = new double[mydt.SIZE_LIST(), mydt.SIZE_LIST()];//
+            for (int i = 0; i < mydt.SIZE_LIST(); i++)
+            {
+                for (int j = 0; j < mydt.SIZE_LIST(); j++)
+                {
+                    if (i == j) { tab[i, j] = 0; }
+                    else { tab[i, j] = mydt.getS(mydt.get_TowN(i), mydt.get_TowN(j)); }
+                }
+            }
+            Wyzazanie W = new Wyzazanie(tab, mydt.SIZE_LIST());
+            List<int> Kolejnosc = W.Sym_Wyz();
+            mydt.get_list_form_salesman(Kolejnosc);
+            List<Zamówienie> KolejnoscZam = new List<Zamówienie>();
+            foreach (int k in Kolejnosc)
+            {
+                if (k == 0 || k == (Kolejnosc.Count() - 1)) continue;
+                KolejnoscZam.Add(ListaTrasy[k - 1]);
+            }
+            //listBox2.DataSource = KolejnoscZam;
+            mydt.calculate_ST(); // to musi byc wywolane po dodaniu adresu bazy na koncu trasy
+            MyResult res = new MyResult();
+            res.etykiety = new string[] { mydt.cala_TimeSpan(), mydt.cala_droga().ToString() + " km" };
+            res.kolejnosc = KolejnoscZam;
+            e.Result = res;
+            mydt.showTrasa(webBrowserMAP);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MyResult result = (MyResult)e.Result;
+            loading.Visible = false;
+            labelCzas.Text = result.etykiety[0];
+            labelDługość.Text = result.etykiety[1];
+            listBox2.DataSource = result.kolejnosc;
+        }
+        class MyResult 
+        {
+            public string[] etykiety { get; set; }
+            public List<Zamówienie> kolejnosc { get; set; }
+        }
     }
 }

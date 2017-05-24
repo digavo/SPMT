@@ -67,6 +67,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnZam = new System.Windows.Forms.Button();
             this.panelTrasa = new System.Windows.Forms.Panel();
+            this.loading = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel4.SuspendLayout();
             this.panelBaza.SuspendLayout();
             this.panel0.SuspendLayout();
@@ -87,7 +89,7 @@
             this.webBrowserMAP.Location = new System.Drawing.Point(312, 3);
             this.webBrowserMAP.MinimumSize = new System.Drawing.Size(23, 23);
             this.webBrowserMAP.Name = "webBrowserMAP";
-            this.webBrowserMAP.Size = new System.Drawing.Size(850, 261);
+            this.webBrowserMAP.Size = new System.Drawing.Size(850, 470);
             this.webBrowserMAP.TabIndex = 3;
             // 
             // btnBaza
@@ -162,6 +164,7 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.Controls.Add(this.loading);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.listBox2);
@@ -173,7 +176,7 @@
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(3, 96);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 168);
+            this.panel4.Size = new System.Drawing.Size(303, 377);
             this.panel4.TabIndex = 36;
             // 
             // label4
@@ -208,7 +211,7 @@
             this.listBox2.ItemHeight = 15;
             this.listBox2.Location = new System.Drawing.Point(4, 203);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(296, 32);
+            this.listBox2.Size = new System.Drawing.Size(296, 227);
             this.listBox2.TabIndex = 6;
             // 
             // label1
@@ -568,17 +571,30 @@
             this.panelTrasa.Controls.Add(this.webBrowserMAP);
             this.panelTrasa.Controls.Add(this.btnBaza);
             this.panelTrasa.Controls.Add(this.panel4);
-            this.panelTrasa.Location = new System.Drawing.Point(2, 545);
+            this.panelTrasa.Location = new System.Drawing.Point(2, 336);
             this.panelTrasa.Name = "panelTrasa";
-            this.panelTrasa.Size = new System.Drawing.Size(1162, 267);
+            this.panelTrasa.Size = new System.Drawing.Size(1162, 476);
             this.panelTrasa.TabIndex = 19;
+            // 
+            // loading
+            // 
+            this.loading.Image = global::SPMT.Properties.Resources.load;
+            this.loading.Location = new System.Drawing.Point(216, 0);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(87, 90);
+            this.loading.TabIndex = 37;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // KurierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1171, 824);
+            this.ClientSize = new System.Drawing.Size(1171, 741);
             this.Controls.Add(this.panelTrasa);
             this.Controls.Add(this.panelBaza);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -638,5 +654,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button btnLZ2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label loading;
     }
 }

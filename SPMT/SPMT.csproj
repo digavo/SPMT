@@ -137,6 +137,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\kurier64.png" />
+    <None Include="Resources\load.gif" />
     <Content Include="Zadania.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
