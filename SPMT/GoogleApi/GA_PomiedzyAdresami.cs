@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -22,29 +23,76 @@ namespace SPMT
         private double GetTimeORDistance(string origin, string destination, GET_KM_or_TIME SorT) // pobiera czas lub droge z google map api 
         {
             double ST = 0; // to zwracamy jesli sie nie uda
+            string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false";
+            string toShow = "";
             try
             {
-                string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + destination + "&sensor=false";
-
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                WebResponse response = request.GetResponse();
-                Stream dataStream = response.GetResponseStream();
-                StreamReader sreader = new StreamReader(dataStream);
-                string responsereader = sreader.ReadToEnd();
-                response.Close();
-
-                DataSet ds = new DataSet();
-                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
-                if (ds.Tables.Count > 0)
+                bool overQuery = false;
+                do
                 {
-                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.Load(url);
+
+                    string status1 = xDoc.SelectSingleNode("/DistanceMatrixResponse/status").InnerText;
+                    toShow += status1 + " ";
+                    if (status1=="OK")
                     {
-                        if (GET_KM_or_TIME.GET_TIME == SorT) { return double.Parse(ds.Tables["duration"].Rows[0]["value"].ToString()); } // zwraca czas
-                        else if (GET_KM_or_TIME.GET_DISTANCE == SorT) { return double.Parse(ds.Tables["distance"].Rows[0]["value"].ToString()); }  // zwraca droge
+                        string status2 = xDoc.SelectSingleNode("/DistanceMatrixResponse/row/element/status").InnerText;
+                        toShow += status2 + " ";
+                        if (status2 == "OK")
+                        {
+                            string duration = xDoc.SelectSingleNode("/DistanceMatrixResponse/row/element/duration/value").InnerText;
+                            string distance = xDoc.SelectSingleNode("/DistanceMatrixResponse/row/element/distance/value").InnerText;
+                            toShow += duration + " " +distance;
+                            if (GET_KM_or_TIME.GET_TIME == SorT)
+                                return double.Parse(duration);
+                            else if (GET_KM_or_TIME.GET_DISTANCE == SorT)
+                                return double.Parse(distance);
+                        }
                     }
-                }
+                    else //OVER QUERY LIMIT
+                    {
+                        MessageBox.Show(status1);
+                        Thread.Sleep(2000); //2s
+                        overQuery = true;
+                    }
+
+
+
+
+
+                    /*HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    WebResponse response = request.GetResponse();
+                    Stream dataStream = response.GetResponseStream();
+                    StreamReader sreader = new StreamReader(dataStream);
+                    string responsereader = sreader.ReadToEnd();
+                    response.Close();
+                    toShow += responsereader + "\n";
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+                    toShow += " ile kolumn: " + ds.Tables.Count + ", 0: " + ds.Tables[0] + " ";
+                    if (ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables["status"].ToString() == "OK")
+                        {
+                            if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                            {
+                                if (GET_KM_or_TIME.GET_TIME == SorT) { return double.Parse(ds.Tables["duration"].Rows[0]["value"].ToString()); } // zwraca czas
+                                else if (GET_KM_or_TIME.GET_DISTANCE == SorT) { return double.Parse(ds.Tables["distance"].Rows[0]["value"].ToString()); }  // zwraca droge
+                            }
+                            overQuery = false;
+                        }
+                        else //OVER QUERY LIMIT
+                        {
+                            MessageBox.Show(ds.Tables["status"].ToString());
+                            Thread.Sleep(2000); //2s
+                            overQuery = true;
+                        }
+                    }*/
+                } while (!overQuery);
+                
             }
-            catch (Exception ex) { MessageBox.Show("bled podczas pobierania czasu przejazdu lub dystansu przejazdu dla trasy od " + origin + " do " + destination+"\n"+ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show("błąd podczas pobierania czasu przejazdu lub dystansu przejazdu dla trasy od " + origin + " do " + destination+"\n"+ex.ToString()+"\n"+url+"\n"+toShow); }
             return ST;
         }
         private double Set_TimeSpan(double czasowo)  //ustawia wartosc TimeSpan czas
