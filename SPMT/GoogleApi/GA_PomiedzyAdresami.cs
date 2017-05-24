@@ -44,7 +44,7 @@ namespace SPMT
                     }
                 }
             }
-            catch { MessageBox.Show("bled podczas pobierania czasu przejazdu lub dystansu przejazdu dla trasy od " + origin + " do " + destination); }
+            catch (Exception ex) { MessageBox.Show("bled podczas pobierania czasu przejazdu lub dystansu przejazdu dla trasy od " + origin + " do " + destination+"\n"+ex.ToString()); }
             return ST;
         }
         private double Set_TimeSpan(double czasowo)  //ustawia wartosc TimeSpan czas
