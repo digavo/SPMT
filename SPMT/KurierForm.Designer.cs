@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KurierForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.webBrowserMAP = new System.Windows.Forms.WebBrowser();
             this.btnBaza = new System.Windows.Forms.Button();
             this.btnTrasa = new System.Windows.Forms.Button();
@@ -39,6 +39,7 @@
             this.labelCzas = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.loading = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -67,7 +68,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnZam = new System.Windows.Forms.Button();
             this.panelTrasa = new System.Windows.Forms.Panel();
-            this.loading = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel4.SuspendLayout();
             this.panelBaza.SuspendLayout();
@@ -114,7 +114,7 @@
             this.btnTrasa.FlatAppearance.BorderSize = 0;
             this.btnTrasa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnTrasa.Image = ((System.Drawing.Image)(resources.GetObject("btnTrasa.Image")));
+            this.btnTrasa.Image = global::SPMT.Properties.Resources.kurier64tr;
             this.btnTrasa.Location = new System.Drawing.Point(0, 0);
             this.btnTrasa.Name = "btnTrasa";
             this.btnTrasa.Size = new System.Drawing.Size(100, 90);
@@ -178,6 +178,14 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(303, 377);
             this.panel4.TabIndex = 36;
+            // 
+            // loading
+            // 
+            this.loading.Image = global::SPMT.Properties.Resources.loading;
+            this.loading.Location = new System.Drawing.Point(226, 13);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(64, 64);
+            this.loading.TabIndex = 37;
             // 
             // label4
             // 
@@ -378,14 +386,14 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.Location = new System.Drawing.Point(143, 0);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView2.Name = "dataGridView2";
@@ -464,14 +472,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(143, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
@@ -575,14 +583,6 @@
             this.panelTrasa.Name = "panelTrasa";
             this.panelTrasa.Size = new System.Drawing.Size(1162, 476);
             this.panelTrasa.TabIndex = 19;
-            // 
-            // loading
-            // 
-            this.loading.Image = global::SPMT.Properties.Resources.load;
-            this.loading.Location = new System.Drawing.Point(216, 0);
-            this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(87, 90);
-            this.loading.TabIndex = 37;
             // 
             // backgroundWorker1
             // 

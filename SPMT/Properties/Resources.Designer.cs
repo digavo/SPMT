@@ -83,9 +83,19 @@ namespace SPMT.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap load {
+        internal static System.Drawing.Bitmap kurier64tr {
             get {
-                object obj = ResourceManager.GetObject("load", resourceCulture);
+                object obj = ResourceManager.GetObject("kurier64tr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loading {
+            get {
+                object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
